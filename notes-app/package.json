@@ -1,15 +1,15 @@
 {
-  "name": "node_course",
+  "name": "notes-app",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
   "author": "",
   "license": "ISC",
-  "devDependencies": {
-    "prettier": "^2.1.1"
+  "dependencies": {
+    "chalk": "^4.1.0",
+    "validator": "^13.1.1"
   }
 }
