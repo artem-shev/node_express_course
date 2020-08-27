@@ -11,7 +11,11 @@ router
   .route('/add-product')
   .get((req, res, next) => {
     // res.sendFile(path.join(ROOT_DIR, 'views', 'add-product.html'));
-    res.render('add-product', { pageTitle: 'Add Product', path: '/admin/add-product' });
+    res.render('add-product', {
+      pageTitle: 'Add Product',
+      path: '/admin/add-product',
+      activeAddProduct: true,
+    });
   })
   .post((req, res, next) => {
     const { title } = req.body;
