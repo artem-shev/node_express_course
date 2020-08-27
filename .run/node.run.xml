@@ -1,0 +1,5 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="node" type="NodeJSConfigurationType" node-parameters="/usr/local/bin/nodemon --exec /usr/local/bin/node" path-to-js-file="nodejs_practice/app.js" working-dir="$PROJECT_DIR$">
+    <method v="2" />
+  </configuration>
+</component>
