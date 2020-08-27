@@ -6,6 +6,9 @@
       <change beforePath="$PROJECT_DIR$/express_app/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/express_app/routes/admin.js" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/routes/admin.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/express_app/routes/shop.js" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/routes/shop.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/express_app/views/404.html" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/views/404.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/express_app/views/add-product.html" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/views/add-product.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/express_app/views/shop.html" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/views/shop.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,7 +34,7 @@
     <property name="javascript.nodejs.core.library.configured.version" value="14.8.0" />
     <property name="javascript.nodejs.core.library.typings.version" value="14.6.0" />
     <property name="js.last.introduce.type" value="CONST" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/express_app/views/handlebars" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/express_app/views/ejs" />
     <property name="nodejs_interpreter_path" value="node" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="prettier.files.pattern" value="{**/*,*}.{js,ts,jsx,tsx,html,css,scss}" />
@@ -47,6 +50,7 @@
       <recent name="$PROJECT_DIR$/express_app/views/pug/layouts" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/express_app/views/ejs" />
       <recent name="$PROJECT_DIR$/express_app/views/handlebars" />
       <recent name="$PROJECT_DIR$/express_app/views" />
       <recent name="$PROJECT_DIR$/express_app/public/css" />
@@ -74,7 +78,7 @@
       <option name="presentableId" value="Default" />
       <updated>1598469117519</updated>
       <workItem from="1598469118636" duration="5491000" />
-      <workItem from="1598521612535" duration="20976000" />
+      <workItem from="1598521612535" duration="23232000" />
     </task>
     <servers />
   </component>
