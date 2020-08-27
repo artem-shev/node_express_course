@@ -3,13 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="8bbd4397-325d-4f85-b22e-6852ca5d059b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/express_app/public/css/main.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/express_app/public/css/product.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/express_app/routes/admin.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/express_app/routes/shop.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/express_app/views/404.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/express_app/views/add_product.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/express_app/views/shop.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/express_app/public/css/forms.css" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/public/css/forms.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/express_app/public/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/public/css/main.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,7 +67,7 @@
       <option name="presentableId" value="Default" />
       <updated>1598469117519</updated>
       <workItem from="1598469118636" duration="5491000" />
-      <workItem from="1598521612535" duration="15539000" />
+      <workItem from="1598521612535" duration="15702000" />
     </task>
     <servers />
   </component>
