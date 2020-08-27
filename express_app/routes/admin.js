@@ -9,7 +9,7 @@ const router = express.Router();
 router
   .route('/add-product')
   .get((req, res, next) => {
-    res.sendFile(path.join(ROOT_DIR, 'views', 'add_product.html'));
+    res.sendFile(path.join(ROOT_DIR, 'views', 'add-product.html'));
   })
   .post((req, res, next) => {
     console.log('req.body', req.body);

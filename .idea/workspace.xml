@@ -3,8 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="8bbd4397-325d-4f85-b22e-6852ca5d059b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/express_app/public/css/main.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/express_app/public/css/product.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/express_app/routes/admin.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/express_app/routes/shop.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/express_app/views/404.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/express_app/views/add_product.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/express_app/views/shop.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,7 +35,7 @@
     <property name="javascript.nodejs.core.library.configured.version" value="14.8.0" />
     <property name="javascript.nodejs.core.library.typings.version" value="14.6.0" />
     <property name="js.last.introduce.type" value="CONST" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/nodejs" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/express_app/views" />
     <property name="nodejs_interpreter_path" value="node" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="prettier.files.pattern" value="{**/*,*}.{js,ts,jsx,tsx,html}" />
@@ -41,6 +46,8 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/express_app/views" />
+      <recent name="$PROJECT_DIR$/express_app/public/css" />
       <recent name="$PROJECT_DIR$/nodejs" />
     </key>
   </component>
@@ -65,7 +72,7 @@
       <option name="presentableId" value="Default" />
       <updated>1598469117519</updated>
       <workItem from="1598469118636" duration="5491000" />
-      <workItem from="1598521612535" duration="14864000" />
+      <workItem from="1598521612535" duration="15539000" />
     </task>
     <servers />
   </component>
