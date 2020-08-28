@@ -17,8 +17,13 @@ module.exports = class Product {
     getProductsFromFile(cb);
   }
 
-  constructor(title) {
+  constructor({ title, imageUrl, description, price }) {
+    console.log('price', price);
     this.title = title;
+    this.imageUrl =
+      imageUrl || 'https://cdn.pixabay.com/photo/2016/03/31/20/51/book-1296045_960_720.png';
+    this.description = description;
+    this.price = Number(price).toFixed(2);
   }
 
   save() {
