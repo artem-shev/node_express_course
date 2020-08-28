@@ -11,8 +11,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8bbd4397-325d-4f85-b22e-6852ca5d059b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/express_app/public/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/public/css/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/express_app/public/css/product.css" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/public/css/product.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/express_app/views/ejs/404.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/views/ejs/404.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/express_app/views/ejs/admin/add-product.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/views/ejs/admin/add-product.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/express_app/views/ejs/admin/products.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/views/ejs/admin/products.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/express_app/views/ejs/includes/navigation.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/views/ejs/includes/navigation.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/express_app/views/ejs/shop/cart.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/views/ejs/shop/cart.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/express_app/views/ejs/shop/checkout.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/views/ejs/shop/checkout.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/express_app/views/ejs/shop/index.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/views/ejs/shop/index.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/express_app/views/ejs/shop/orders.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/views/ejs/shop/orders.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/express_app/views/ejs/shop/product-detail.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/views/ejs/shop/product-detail.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/express_app/views/ejs/shop/product-list.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/views/ejs/shop/product-list.ejs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,11 +59,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/express_app/views/ejs/includes" />
+      <recent name="$PROJECT_DIR$/express_app/public/js" />
       <recent name="$PROJECT_DIR$/express_app/views/ejs/shop" />
       <recent name="$PROJECT_DIR$/express_app/views/ejs/admin" />
       <recent name="$PROJECT_DIR$/express_app/views/handlebars/layouts" />
-      <recent name="$PROJECT_DIR$/express_app/views/pug" />
-      <recent name="$PROJECT_DIR$/express_app/views/pug/layouts" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/express_app/public/css" />
@@ -84,7 +94,7 @@
       <option name="presentableId" value="Default" />
       <updated>1598469117519</updated>
       <workItem from="1598469118636" duration="5491000" />
-      <workItem from="1598521612535" duration="31898000" />
+      <workItem from="1598521612535" duration="32901000" />
     </task>
     <servers />
   </component>

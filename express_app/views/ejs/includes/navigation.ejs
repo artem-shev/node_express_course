@@ -14,6 +14,16 @@
 <header class="main-header">
     <nav class="main-header__nav">
         <ul class="main-header__item-list">
+
+        </ul>
+    </nav>
+</header>
+
+<div class="backdrop"></div>
+<header class="main-header">
+    <button id="side-menu-toggle">Menu</button>
+    <nav class="main-header__nav">
+        <ul class="main-header__item-list">
             <% for (r of routes) { %>
                 <li class="main-header__item">
                     <a href="<%= r.url %>" class="<%= path === r.url ? 'active' : '' %>"><%= r.name %></a>
@@ -22,3 +32,13 @@
         </ul>
     </nav>
 </header>
+
+<nav class="mobile-nav">
+    <ul class="mobile-nav__item-list">
+        <% for (r of routes) { %>
+            <li class="mobile-nav__item">
+                <a href="<%= r.url %>" class="<%= path === r.url ? 'active' : '' %>"><%= r.name %></a>
+            </li>
+        <% } %>
+    </ul>
+</nav>
