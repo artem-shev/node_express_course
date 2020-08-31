@@ -12,17 +12,18 @@
   <component name="ChangeListManager">
     <list default="true" id="8bbd4397-325d-4f85-b22e-6852ca5d059b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/express_app/controllers/shop.js" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/controllers/shop.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/express_app/data/products.json" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/data/products.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/express_app/models/product.js" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/models/product.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/express_app/public/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/public/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/express_app/routes/shop.js" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/routes/shop.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/express_app/views/ejs/404.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/views/ejs/404.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/express_app/views/ejs/admin/add-product.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/views/ejs/admin/add-product.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/express_app/views/ejs/admin/products.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/views/ejs/admin/products.ejs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/express_app/views/ejs/includes/navigation.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/views/ejs/includes/navigation.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/express_app/views/ejs/shop/cart.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/views/ejs/shop/cart.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/express_app/views/ejs/shop/checkout.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/views/ejs/shop/checkout.ejs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/express_app/views/ejs/shop/index.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/views/ejs/shop/index.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/express_app/views/ejs/shop/orders.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/views/ejs/shop/orders.ejs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/express_app/views/ejs/shop/product-detail.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/views/ejs/shop/product-detail.ejs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/express_app/views/ejs/shop/product-list.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/views/ejs/shop/product-list.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,7 +95,7 @@
       <option name="presentableId" value="Default" />
       <updated>1598469117519</updated>
       <workItem from="1598469118636" duration="5491000" />
-      <workItem from="1598521612535" duration="32901000" />
+      <workItem from="1598521612535" duration="37225000" />
     </task>
     <servers />
   </component>
@@ -224,17 +225,5 @@
     </state>
     <state x="385" y="196" width="670" height="676" key="search.everywhere.popup/0.0.1440.900/1440.-300.1920.1200@0.0.1440.900" timestamp="1598612672272" />
     <state x="385" y="196" width="670" height="676" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1598482409740" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/express_app/controllers/admin.js</url>
-          <line>12</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
