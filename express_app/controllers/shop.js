@@ -2,7 +2,7 @@ const Product = require('../models/product');
 const Cart = require('../models/cart');
 
 module.exports.getProducts = (req, res, next) => {
-  Product.fetchAll((products) => {
+  Product.fetchAll().then((products) => {
     // res.sendFile(path.join(ROOT_DIR, 'views', 'shop.html'));
     res.render('shop/product-list', {
       prods: products,
@@ -15,7 +15,7 @@ module.exports.getProducts = (req, res, next) => {
 module.exports.getProduct = (req, res) => {
   const { productId } = req.params;
 
-  Product.findById(productId, (product) => {
+  Product.findById(productId).then((product) => {
     res.render('shop/product-detail', {
       product,
       pageTitle: product.title,
@@ -25,7 +25,7 @@ module.exports.getProduct = (req, res) => {
 };
 
 module.exports.getIndex = (req, res) => {
-  Product.fetchAll((products) => {
+  Product.fetchAll().then((products) => {
     res.render('shop', {
       prods: products,
       pageTitle: 'Shop',
@@ -36,7 +36,7 @@ module.exports.getIndex = (req, res) => {
 
 exports.getCart = (req, res, next) => {
   Cart.getCart((cart) => {
-    Product.fetchAll((products) => {
+    Product.fetchAll().then((products) => {
       const cartProducts = [];
       for (product of products) {
         const cartProductData = cart.products.find((prod) => prod.id === product.id);
@@ -55,7 +55,7 @@ exports.getCart = (req, res, next) => {
 
 exports.postCart = (req, res, next) => {
   const prodId = req.body.productId;
-  Product.findById(prodId, (product) => {
+  Product.findById(prodId).then((product) => {
     Cart.addProduct(prodId, product.price);
   });
   res.redirect('/cart');
@@ -63,7 +63,7 @@ exports.postCart = (req, res, next) => {
 
 exports.postCartDeleteProduct = (req, res, next) => {
   const prodId = req.body.productId;
-  Product.findById(prodId, (product) => {
+  Product.findById(prodId).then((product) => {
     Cart.deleteProduct(prodId, product.price);
     res.redirect('/cart');
   });

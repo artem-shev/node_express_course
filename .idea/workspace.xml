@@ -11,11 +11,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8bbd4397-325d-4f85-b22e-6852ca5d059b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/express_app/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/express_app/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/express_app/controllers/admin.js" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/controllers/admin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/express_app/controllers/shop.js" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/controllers/shop.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/express_app/models/product.js" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/models/product.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/express_app/utils/database.js" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/utils/database.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

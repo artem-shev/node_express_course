@@ -8,7 +8,7 @@ const shopRoutes = require('./routes/shop');
 
 const { get404 } = require('./controllers/error');
 
-const PORT = 8000;
+const PORT = 3000;
 const app = express();
 
 app.set('view engine', 'ejs');

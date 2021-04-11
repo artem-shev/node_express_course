@@ -9,16 +9,16 @@ module.exports.getAddProduct = (req, res, next) => {
   });
 };
 
-module.exports.postAddProduct = (req, res, next) => {
+module.exports.postAddProduct = async (req, res, next) => {
   const { title, description, price, imageUrl } = req.body;
   const product = new Product({ title, imageUrl, description, price });
 
-  product.save();
+  await product.save();
   res.redirect('/');
 };
 
 module.exports.getProducts = (req, res) => {
-  Product.fetchAll((products) => {
+  Product.fetchAll().then((products) => {
     // res.sendFile(path.join(ROOT_DIR, 'views', 'shop.html'));
     res.render('admin/products', {
       prods: products,
@@ -34,7 +34,8 @@ exports.getEditProduct = (req, res, next) => {
     return res.redirect('/');
   }
   const { productId } = req.params;
-  Product.findById(productId, (product) => {
+
+  Product.findById(productId).then((product) => {
     if (!product) {
       return res.redirect('/');
     }
@@ -61,7 +62,7 @@ exports.postEditProduct = (req, res, next) => {
 };
 
 exports.getProducts = (req, res, next) => {
-  Product.fetchAll((products) => {
+  Product.fetchAll().then((products) => {
     res.render('admin/products', {
       prods: products,
       pageTitle: 'Admin Products',
