@@ -8,6 +8,7 @@ const shopRoutes = require('./routes/shop');
 
 const { get404 } = require('./controllers/error');
 
+const PORT = 8000;
 const app = express();
 
 app.set('view engine', 'ejs');
@@ -21,4 +22,6 @@ app.use(shopRoutes);
 
 app.use(get404);
 
-app.listen(3000);
+app.listen(PORT, () => {
+  console.log(`\napp listening at http://localhost:${PORT}\n`);
+});

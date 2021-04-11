@@ -1,16 +1,1 @@
-[
-  {
-    "title": "book",
-    "imageUrl": "https://cdn.pixabay.com/photo/2016/03/31/20/51/book-1296045_960_720.png",
-    "description": "descr",
-    "price": "19.99",
-    "id": "20898514-a0cc-4975-8f62-f0bfdc882c20"
-  },
-  {
-    "title": "book1 ",
-    "imageUrl": "https://cdn.pixabay.com/photo/2016/03/31/20/51/book-1296045_960_720.png",
-    "description": "descr\r\n",
-    "price": "2.00",
-    "id": "2de39bb9-735c-49bc-98c1-dcac75b89ce8"
-  }
-]
+[{"title":"book","imageUrl":"https://cdn.pixabay.com/photo/2016/03/31/20/51/book-1296045_960_720.png","description":"descr","price":"19.99","id":"20898514-a0cc-4975-8f62-f0bfdc882c20"},{"title":"book1 ","imageUrl":"https://cdn.pixabay.com/photo/2016/03/31/20/51/book-1296045_960_720.png","description":"descr\r\n","price":"2.00","id":"2de39bb9-735c-49bc-98c1-dcac75b89ce8"},{"title":"test","imageUrl":"https://cdn.pixabay.com/photo/2016/03/31/20/51/book-1296045_960_720.png","description":"testdescr","price":"20.00","id":"5501dca8-fe85-431f-92ee-7b627d20afc9"}]
