@@ -11,14 +11,19 @@ module.exports.getAddProduct = (req, res, next) => {
 
 module.exports.postAddProduct = async (req, res, next) => {
   const { title, description, price, imageUrl } = req.body;
-  const product = new Product({ title, imageUrl, description, price });
 
-  await product.save();
+  await req.user.createProduct({
+    title,
+    description,
+    price,
+    imageUrl: imageUrl || 'https://cdn.pixabay.com/photo/2016/03/31/20/51/book-1296045_960_720.png',
+  });
+
   res.redirect('/');
 };
 
 module.exports.getProducts = (req, res) => {
-  Product.fetchAll().then((products) => {
+  req.user.getProducts().then((products) => {
     // res.sendFile(path.join(ROOT_DIR, 'views', 'shop.html'));
     res.render('admin/products', {
       prods: products,
@@ -35,7 +40,7 @@ exports.getEditProduct = (req, res, next) => {
   }
   const { productId } = req.params;
 
-  Product.findById(productId).then((product) => {
+  Product.findByPk(productId).then((product) => {
     if (!product) {
       return res.redirect('/');
     }
@@ -48,31 +53,22 @@ exports.getEditProduct = (req, res, next) => {
   });
 };
 
-exports.postEditProduct = (req, res, next) => {
+exports.postEditProduct = async (req, res, next) => {
   const { title, description, price, imageUrl, productId: id } = req.body;
-  const updatedProduct = new Product({
-    id,
-    title,
-    imageUrl,
-    description,
-    price,
-  });
-  updatedProduct.save();
+
+  const product = await Product.findByPk(id);
+
+  Object.assign(product, { title, imageUrl, description, price });
+
+  await product.save();
+
   res.redirect('/admin/products');
 };
 
-exports.getProducts = (req, res, next) => {
-  Product.fetchAll().then((products) => {
-    res.render('admin/products', {
-      prods: products,
-      pageTitle: 'Admin Products',
-      path: '/admin/products',
-    });
-  });
-};
-
-exports.postDeleteProduct = (req, res, next) => {
+exports.postDeleteProduct = async (req, res, next) => {
   const { productId } = req.body;
-  Product.deleteById(productId);
+
+  await Product.destroy({ where: { id: productId } });
+
   res.redirect('/admin/products');
 };

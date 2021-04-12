@@ -15,13 +15,23 @@
       <change beforePath="$PROJECT_DIR$/express_app/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/express_app/controllers/admin.js" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/controllers/admin.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/express_app/controllers/shop.js" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/controllers/shop.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/express_app/models/cart.js" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/models/cart.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/express_app/models/product.js" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/models/product.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/express_app/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/express_app/utils/database.js" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/utils/database.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/express_app/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="tsconfig.json" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -53,19 +63,19 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/express_app/views/ejs/includes" />
-      <recent name="$PROJECT_DIR$/express_app/public/js" />
-      <recent name="$PROJECT_DIR$/express_app/views/ejs/shop" />
-      <recent name="$PROJECT_DIR$/express_app/views/ejs/admin" />
-      <recent name="$PROJECT_DIR$/express_app/views/handlebars/layouts" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/express_app/public/css" />
       <recent name="$PROJECT_DIR$/express_app/views/ejs" />
       <recent name="$PROJECT_DIR$/express_app/views/handlebars" />
       <recent name="$PROJECT_DIR$/express_app/views" />
       <recent name="$PROJECT_DIR$/nodejs" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/express_app" />
+      <recent name="$PROJECT_DIR$/express_app/views/ejs/includes" />
+      <recent name="$PROJECT_DIR$/express_app/public/js" />
+      <recent name="$PROJECT_DIR$/express_app/views/ejs/shop" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -99,6 +109,8 @@
       <workItem from="1618129626299" duration="11000" />
       <workItem from="1618129647177" duration="360000" />
       <workItem from="1618130022726" duration="4851000" />
+      <workItem from="1618148361373" duration="868000" />
+      <workItem from="1618234972775" duration="2508000" />
     </task>
     <servers />
   </component>

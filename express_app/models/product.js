@@ -1,38 +1,26 @@
-const { v4 } = require('uuid');
+const { Model, INTEGER, STRING, DOUBLE } = require('sequelize');
 
-const Cart = require('./cart');
-const db = require('../utils/database');
+const sequelize = require('../utils/database');
 
-module.exports = class Product {
-  static async fetchAll() {
-    const [rows, fieldData] = await db.execute('SELECT * FROM products');
+// const Product = sequelize.define('product', {
+//   id: { type: Sequelize.INTEGER, autoIncrement: true, allowNull: false, primaryKey: true },
+//   title: Sequelize.STRING,
+//   price: { type: Sequelize.DOUBLE, allowNull: false },
+//   imageUrl: { type: Sequelize.STRING, allowNull: false },
+//   description: { type: Sequelize.STRING, allowNull: false },
+// });
 
-    return rows;
-  }
+class Product extends Model {}
 
-  static async findById(productId) {
-    console.log('productId', productId);
-    const [rows, fieldData] = await db.execute('SELECT * FROM products WHERE products.id = ?', [
-      productId,
-    ]);
-    return rows[0];
-  }
+Product.init(
+  {
+    id: { type: INTEGER, autoIncrement: true, allowNull: false, primaryKey: true },
+    title: STRING,
+    price: { type: DOUBLE, allowNull: false },
+    imageUrl: { type: STRING, allowNull: false },
+    description: { type: STRING, allowNull: false },
+  },
+  { sequelize, modelName: 'product' },
+);
 
-  static deleteById(id) {}
-
-  constructor({ title, imageUrl, description, price, id }) {
-    this.title = title;
-    this.imageUrl =
-      imageUrl || 'https://cdn.pixabay.com/photo/2016/03/31/20/51/book-1296045_960_720.png';
-    this.description = description;
-    this.price = Number(price).toFixed(2);
-    this.id = id;
-  }
-
-  save() {
-    return db.execute(
-      'INSERT INTO products (title, price, imageUrl, description) VALUES (?, ?, ?, ?)',
-      [this.title, this.price, this.imageUrl, this.description],
-    );
-  }
-};
+module.exports = Product;
