@@ -3,9 +3,10 @@ const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
 
+require('./models');
 const sequelize = require('./utils/database');
-const Product = require('./models/product');
 const User = require('./models/user');
+
 const adminData = require('./routes/admin');
 const shopRoutes = require('./routes/shop');
 
@@ -31,10 +32,8 @@ app.use(shopRoutes);
 
 app.use(get404);
 
-Product.belongsTo(User, { constraints: true, onDelete: 'CASCADE' });
-User.hasMany(Product);
-
 sequelize
+  // .sync({ force: true })
   .sync()
   .then(async () => {
     let user = await User.findByPk(1);
