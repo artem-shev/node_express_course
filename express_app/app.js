@@ -11,6 +11,7 @@ const adminData = require('./routes/admin');
 const shopRoutes = require('./routes/shop');
 
 const { get404 } = require('./controllers/error');
+const setupInitials = require('./utils/setupInitials');
 
 const PORT = 3000;
 const app = express();
@@ -35,15 +36,7 @@ app.use(get404);
 sequelize
   // .sync({ force: true })
   .sync()
-  .then(async () => {
-    let user = await User.findByPk(1);
-
-    if (!user) {
-      user = await User.create({ name: 'admin', email: 'admin@admin.com' });
-    }
-
-    return user;
-  })
+  .then(setupInitials)
   .then(() => {
     app.listen(PORT, () => {
       console.log(`\napp listening at http://localhost:${PORT}\n`);

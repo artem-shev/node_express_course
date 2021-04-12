@@ -6,6 +6,7 @@ require('dotenv').config({
   path: path.resolve(process.cwd(), '.env.local'),
 });
 
+// @ts-ignore
 const sequelize = new Sequelize('node-complete', 'root', process.env.MYSQL_PSW, {
   dialect: 'mysql',
   host: 'localhost',
