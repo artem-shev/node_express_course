@@ -14,15 +14,8 @@
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/express_app/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/express_app/controllers/shop.js" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/controllers/shop.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/express_app/data/cart.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/express_app/data/products.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/express_app/models/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/models/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/express_app/routes/shop.js" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/routes/shop.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/express_app/utils/database.js" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/utils/database.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/express_app/views/ejs/shop/cart.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/views/ejs/shop/cart.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/express_app/views/ejs/shop/index.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/views/ejs/shop/index.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/express_app/views/ejs/shop/orders.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/views/ejs/shop/orders.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,7 +106,7 @@
       <workItem from="1618129647177" duration="360000" />
       <workItem from="1618130022726" duration="4851000" />
       <workItem from="1618148361373" duration="868000" />
-      <workItem from="1618234972775" duration="13356000" />
+      <workItem from="1618234972775" duration="14117000" />
     </task>
     <servers />
   </component>
