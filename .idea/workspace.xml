@@ -11,9 +11,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8bbd4397-325d-4f85-b22e-6852ca5d059b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/express_app/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/express_app/controllers/admin.js" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/controllers/admin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/express_app/controllers/shop.js" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/controllers/shop.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/express_app/middlewares/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/middlewares/user.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/express_app/models/cart-item.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/express_app/models/cart.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/express_app/models/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/models/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/express_app/models/order-item.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/express_app/models/order.js" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/models/order.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/express_app/models/product.js" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/models/product.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/express_app/models/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/models/user.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/express_app/utils/database.js" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/utils/database.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/express_app/utils/setupInitials.js" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/utils/setupInitials.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/express_app/views/ejs/admin/edit-product.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/views/ejs/admin/edit-product.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/express_app/views/ejs/admin/products.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/views/ejs/admin/products.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/express_app/views/ejs/includes/add-to-cart.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/views/ejs/includes/add-to-cart.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/express_app/views/ejs/shop/cart.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/views/ejs/shop/cart.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/express_app/views/ejs/shop/orders.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/views/ejs/shop/orders.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/express_app/views/ejs/shop/product-list.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/views/ejs/shop/product-list.ejs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
@@ -30,6 +47,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1geJRf7o22xjCjuGb6Rk7GPi7MG" />

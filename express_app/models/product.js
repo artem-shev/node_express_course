@@ -1,26 +1,16 @@
-const { Model, INTEGER, STRING, DOUBLE } = require('sequelize');
+const { makeModel } = require('../utils/database');
 
-const sequelize = require('../utils/database');
+class Product extends makeModel('products') {
+  constructor({ title, price, description, imageUrl, id = null, userId }) {
+    super(id);
 
-// const Product = sequelize.define('product', {
-//   id: { type: Sequelize.INTEGER, autoIncrement: true, allowNull: false, primaryKey: true },
-//   title: Sequelize.STRING,
-//   price: { type: Sequelize.DOUBLE, allowNull: false },
-//   imageUrl: { type: Sequelize.STRING, allowNull: false },
-//   description: { type: Sequelize.STRING, allowNull: false },
-// });
-
-class Product extends Model {}
-
-Product.init(
-  {
-    id: { type: INTEGER, autoIncrement: true, allowNull: false, primaryKey: true },
-    title: STRING,
-    price: { type: DOUBLE, allowNull: false },
-    imageUrl: { type: STRING, allowNull: false },
-    description: { type: STRING, allowNull: false },
-  },
-  { sequelize, modelName: 'product' },
-);
+    this.title = title || 'awesome book';
+    this.price = price || 42.99;
+    this.description = description || 'awesome description';
+    this.imageUrl =
+      imageUrl || 'https://cdn.pixabay.com/photo/2016/03/31/20/51/book-1296045_960_720.png';
+    this.userId = userId;
+  }
+}
 
 module.exports = Product;
