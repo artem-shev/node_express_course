@@ -5,8 +5,8 @@ const bodyParser = require('body-parser');
 
 require('./models');
 const sequelize = require('./utils/database');
-const User = require('./models/user');
 
+const userMiddleware = require('./middlewares/user');
 const adminData = require('./routes/admin');
 const shopRoutes = require('./routes/shop');
 
@@ -19,11 +19,7 @@ const app = express();
 app.set('view engine', 'ejs');
 app.set('views', path.join('views', 'ejs'));
 
-app.use(async (req, res, next) => {
-  req.user = await User.findByPk(1);
-
-  next();
-});
+app.use(userMiddleware);
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(process.cwd(), 'public')));
