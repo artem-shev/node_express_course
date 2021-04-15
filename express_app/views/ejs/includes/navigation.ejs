@@ -6,8 +6,8 @@
         { url: '/products', name: 'Products' },
         { url: '/cart', name: 'Cart' },
         { url: '/orders', name: 'Orders' },
-        { url: '/admin/add-product', name: 'Add Products' },
-        { url: '/admin/products', name: 'Admin Products' },
+        // { url: '/admin/add-product', name: 'Add Products' },
+        // { url: '/admin/products', name: 'Admin Products' },
     ];
 %>
 
@@ -21,6 +21,11 @@
                     <a href="<%= r.url %>" class="<%= path === r.url ? 'active' : '' %>"><%= r.name %></a>
                 </li>
             <% } %>
+        </ul>
+        <ul class="main-header__item-list">
+            <li class="main-header__item">
+                <a href="/login">Login</a>
+            </li>
         </ul>
     </nav>
 </header>

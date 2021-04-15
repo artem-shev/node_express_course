@@ -3,7 +3,7 @@ const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
 
-const { mongoConnect } = require('./utils/database');
+const { connectToDb } = require('./utils/database');
 
 const userMiddleware = require('./middlewares/user');
 const adminData = require('./routes/admin');
@@ -28,7 +28,7 @@ app.use(shopRoutes);
 
 app.use(get404);
 
-mongoConnect()
+connectToDb()
   .then(setupInitials)
   .then(() => {
     app.listen(PORT, () => {

@@ -1,16 +1,12 @@
-const { makeModel } = require('../utils/database');
+const { Schema, model } = require('mongoose');
+const { MODEL_NAMES } = require('../utils/database');
 
-class Product extends makeModel('products') {
-  constructor({ title, price, description, imageUrl, id = null, userId }) {
-    super(id);
+const productSchema = new Schema({
+  title: { type: String, required: true },
+  price: { type: Number, required: true },
+  description: { type: String, required: true },
+  imageUrl: { type: String, required: true },
+  userId: { type: Schema.Types.ObjectId, ref: MODEL_NAMES.USER, required: true },
+});
 
-    this.title = title || 'awesome book';
-    this.price = price || 42.99;
-    this.description = description || 'awesome description';
-    this.imageUrl =
-      imageUrl || 'https://cdn.pixabay.com/photo/2016/03/31/20/51/book-1296045_960_720.png';
-    this.userId = userId;
-  }
-}
-
-module.exports = Product;
+module.exports = model(MODEL_NAMES.PRODUCT, productSchema);

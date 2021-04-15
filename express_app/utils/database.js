@@ -1,31 +1,28 @@
 const path = require('path');
-const mongodb = require('mongodb');
+const mongoose = require('mongoose');
 const _ = require('lodash');
 require('dotenv').config({
   path: path.resolve(process.cwd(), '.env.local'),
 });
 
-const MongoClient = mongodb.MongoClient;
 const dbName = 'nodeComplete';
-const url = `mongodb+srv://ashevliakov:${process.env.DB_PSW}@cluster0.0tlz2.mongodb.net/${dbName}?retryWrites=true&w=majority`;
+const url = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PSW}@cluster0.0tlz2.mongodb.net/${dbName}?retryWrites=true&w=majority`;
 
 let db;
 
-const mongoConnect = async (cb) => {
-  const client = await MongoClient.connect(url, { useUnifiedTopology: true });
+const connectToDb = async () => {
+  return mongoose.connect(url);
 
-  if (cb) cb(client);
-
-  db = client.db();
-
-  return client;
+  // return client;
 };
+const COLLECTION_NAMES = { PRODUCTS: 'products', USERS: 'users', ORDERS: 'orders' };
+const MODEL_NAMES = { PRODUCT: 'Product', USER: 'User', ORDER: 'Order' };
 
 const getDb = () => db;
-const makeId = (id) => new mongodb.ObjectID(id);
+const makeId = (id) => id;
 const makeGetCollection = (collectionName) => () => {
   const db = getDb();
-  return db.collection(collectionName);
+  return db?.collection(collectionName);
 };
 
 const makeModel = (collectionName) => {
@@ -62,4 +59,12 @@ const makeModel = (collectionName) => {
   };
 };
 
-module.exports = { mongoConnect, getDb, makeId, makeGetCollection, makeModel };
+module.exports = {
+  connectToDb,
+  getDb,
+  makeId,
+  makeGetCollection,
+  makeModel,
+  COLLECTION_NAMES,
+  MODEL_NAMES,
+};
