@@ -1,73 +1,52 @@
-const { makeModel, makeGetCollection } = require('../utils/database');
+const { Schema, model } = require('mongoose');
+const { MODEL_NAMES } = require('../utils/database');
 
-const productsCollection = makeGetCollection('products');
-const ordersCollection = makeGetCollection('orders');
-
-class User extends makeModel('users') {
-  constructor({ id = null, _id = undefined, name, email, cart = { items: [] } }) {
-    super(id);
-
-    this.name = name;
-    this.email = email;
-    this.cart = cart;
-    if (_id) this._id = _id;
-  }
-
-  addToCart(product) {
-    const cartItem = this.getCartItem(product._id);
-
-    if (cartItem) {
-      cartItem.quantity++;
-    } else {
-      this.cart.items.push({ productId: product._id, quantity: 1 });
-    }
-
-    return this.save(['cart']);
-  }
-
-  async getCart() {
-    const productIds = this.cart.items.map(({ productId }) => productId);
-
-    const products = await productsCollection()
-      .find({
-        _id: { $in: productIds },
-      })
-      .toArray();
-
-    return products.map((p) => ({ ...p, quantity: this.getCartItem(p._id)?.quantity }));
-  }
-
-  getCartItem(id) {
-    return this.cart.items.find(({ productId }) => productId.toString() === id.toString());
-  }
-
-  deleteItemFromCart(id) {
-    this.cart.items = this.cart.items.filter(
-      ({ productId }) => productId.toString() !== id.toString(),
-    );
-
-    return this.save(['cart.items']);
-  }
-
-  async addOrder() {
-    const cartProducts = await this.getCart();
-    const order = {
-      items: cartProducts,
-      user: {
-        _id: this._id,
+const userSchema = new Schema({
+  name: { type: String, required: true },
+  email: { type: String, required: true },
+  cart: {
+    items: [
+      {
+        product: { type: Schema.Types.ObjectId, ref: MODEL_NAMES.PRODUCT, required: true },
+        quantity: { type: Number, required: true },
       },
-    };
+    ],
+  },
+});
 
-    await ordersCollection().insertOne(order);
+userSchema.methods.getCart = async function () {
+  await this.populate('cart.items.product').execPopulate();
+  return this.cart.items;
+};
 
-    this.cart = { items: [] };
+userSchema.methods.getCartItem = function (id) {
+  return this.cart.items.find(({ product }) => product._id.toString() === id.toString());
+};
 
-    return this.save(['cart']);
+userSchema.methods.addToCart = function (product) {
+  const cartItem = this.getCartItem(product._id);
+
+  if (cartItem) {
+    cartItem.quantity++;
+  } else {
+    this.cart.items.push({ product: product, quantity: 1 });
   }
 
-  async getOrders() {
-    return ordersCollection().find({ 'user._id': this._id }).toArray();
-  }
-}
+  return this.save();
+};
 
-module.exports = User;
+userSchema.methods.deleteItemFromCart = function (id) {
+  this.cart.items = this.cart.items.filter(
+    ({ product }) => product._id.toString() !== id.toString(),
+  );
+
+  return this.save();
+};
+
+userSchema.methods.clearCart = function () {
+  this.cart = { items: [] };
+
+  return this.save();
+};
+
+module.exports = model(MODEL_NAMES.USER, userSchema);

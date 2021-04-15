@@ -19,5 +19,5 @@
 
 .form-control input:focus,
 .form-control textarea:focus {
-  outline-color: var(--primary);
+  outline-color: #00695c;
 }

@@ -10,16 +10,22 @@ module.exports.getAddProduct = (req, res, next) => {
 };
 
 module.exports.postAddProduct = async (req, res, next) => {
-  const userId = req.user._id;
-  const { title, description, price, imageUrl } = req.body;
+  let { title, description, price, imageUrl } = req.body;
 
-  await new Product({ title, description, price, imageUrl, userId }).save();
+  if (!title) title = 'book';
+  if (!description) description = 'awesome book';
+  if (!price) price = 42.99;
+  if (!imageUrl) {
+    imageUrl = 'https://cdn.pixabay.com/photo/2016/03/31/20/51/book-1296045_960_720.png';
+  }
+
+  await new Product({ title, description, price, imageUrl, userId: req.user }).save();
 
   res.redirect('/');
 };
 
 module.exports.getProducts = (req, res) => {
-  Product.fetchAll().then((products) => {
+  Product.find().then((products) => {
     // res.sendFile(path.join(ROOT_DIR, 'views', 'shop.html'));
     res.render('admin/products', {
       prods: products,
@@ -50,10 +56,9 @@ exports.getEditProduct = (req, res, next) => {
 };
 
 exports.postEditProduct = async (req, res, next) => {
-  const userId = req.user._id;
-  const { title, description, price, imageUrl, productId: id } = req.body;
+  const { title, description, price, imageUrl, productId } = req.body;
 
-  await new Product({ id, price, imageUrl, description, title, userId }).save();
+  await Product.findByIdAndUpdate(productId, { price, imageUrl, description, title });
 
   res.redirect('/admin/products');
 };
@@ -61,7 +66,7 @@ exports.postEditProduct = async (req, res, next) => {
 exports.postDeleteProduct = async (req, res, next) => {
   const { productId } = req.body;
 
-  await Product.deleteById(productId);
+  await Product.findByIdAndDelete(productId);
 
   res.redirect('/admin/products');
 };

@@ -1,7 +1,8 @@
 const Product = require('../models/product');
+const Order = require('../models/order');
 
 module.exports.getProducts = (req, res, next) => {
-  Product.fetchAll().then((products) => {
+  Product.find().then((products) => {
     // res.sendFile(path.join(ROOT_DIR, 'views', 'shop.html'));
     res.render('shop/product-list', {
       prods: products,
@@ -24,7 +25,7 @@ module.exports.getProduct = (req, res) => {
 };
 
 module.exports.getIndex = (req, res) => {
-  Product.fetchAll().then((products) => {
+  Product.find().then((products) => {
     res.render('shop', {
       prods: products,
       pageTitle: 'Shop',
@@ -35,13 +36,12 @@ module.exports.getIndex = (req, res) => {
 
 exports.getCart = async (req, res, next) => {
   const { user } = req;
-
-  const cartProducts = await user.getCart();
+  const products = await user.getCart();
 
   res.render('shop/cart', {
     path: '/cart',
     pageTitle: 'Your Cart',
-    products: cartProducts,
+    products,
   });
 };
 
@@ -79,7 +79,7 @@ module.exports.getCheckout = (req, res, next) => {
 module.exports.getOrders = async (req, res, next) => {
   const { user } = req;
 
-  const orders = await user.getOrders();
+  const orders = await Order.find({ user });
 
   res.render('shop/orders', {
     pageTitle: 'Your Orders',
@@ -91,7 +91,11 @@ module.exports.getOrders = async (req, res, next) => {
 module.exports.postOrder = async (req, res, next) => {
   const { user } = req;
 
-  await user.addOrder();
+  await user.populate('cart.items.product').execPopulate();
+
+  await new Order({ products: user.cart.items, user }).save();
+
+  await user.clearCart();
 
   res.redirect('/orders');
 };
