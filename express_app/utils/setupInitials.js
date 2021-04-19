@@ -2,7 +2,7 @@ const User = require('../models/user');
 const Product = require('../models/product');
 
 module.exports = async () => {
-  let user = await User.findOne();
+  let user = await User.findOne({ email: 'admin@admin.com' });
 
   if (!user) {
     user = await new User({ name: 'admin', email: 'admin@admin.com', cart: { items: [] } }).save();

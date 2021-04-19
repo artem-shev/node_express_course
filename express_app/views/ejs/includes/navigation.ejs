@@ -2,12 +2,18 @@
     const baseUrl = '/';
     const addProductUrl = '/admin/add-product';
     const routes = [
-        { url: '/', name: 'Shop' },
-        { url: '/products', name: 'Products' },
-        { url: '/cart', name: 'Cart' },
-        { url: '/orders', name: 'Orders' },
-        // { url: '/admin/add-product', name: 'Add Products' },
-        // { url: '/admin/products', name: 'Admin Products' },
+        [
+            { url: '/', name: 'Shop' },
+            { url: '/products', name: 'Products' },
+            { url: '/cart', name: 'Cart', private: true },
+            { url: '/orders', name: 'Orders', private: true },
+            { url: '/admin/add-product', name: 'Add Products', private: true },
+            { url: '/admin/products', name: 'Admin Products', private: true },
+        ],
+        [
+            { url: '/login', name: 'Login', private: false },
+            { url:'/logout', name: 'Logout', private: true },
+        ]
     ];
 %>
 
@@ -15,18 +21,17 @@
 <header class="main-header">
     <button id="side-menu-toggle">Menu</button>
     <nav class="main-header__nav">
-        <ul class="main-header__item-list">
-            <% for (r of routes) { %>
-                <li class="main-header__item">
-                    <a href="<%= r.url %>" class="<%= path === r.url ? 'active' : '' %>"><%= r.name %></a>
-                </li>
-            <% } %>
-        </ul>
-        <ul class="main-header__item-list">
-            <li class="main-header__item">
-                <a href="/login">Login</a>
-            </li>
-        </ul>
+        <% routes.forEach((menu) => { %>
+            <ul class="main-header__item-list">
+                <% for (r of menu) { %>
+                    <% if (r.private === undefined || (r.private && isAuthenticated) || (r.private === false && !isAuthenticated)) { %>
+                        <li class="main-header__item">
+                            <a href="<%= r.url %>" class="<%= path === r.url ? 'active' : '' %>"><%= r.name %></a>
+                        </li>
+                    <% } %>
+                <% } %>
+            </ul>
+        <% }) %>
     </nav>
 </header>
 

@@ -1,13 +1,18 @@
 const path = require('path');
 const mongoose = require('mongoose');
 const _ = require('lodash');
+const session = require('express-session');
+const SessionStore = require('connect-mongodb-session')(session);
+
 require('dotenv').config({
   path: path.resolve(process.cwd(), '.env.local'),
 });
 
 const dbName = 'nodeComplete';
-const url = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PSW}@cluster0.0tlz2.mongodb.net/${dbName}?retryWrites=true&w=majority`;
+const url = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PSW}@cluster0.0tlz2.mongodb.net/${dbName}?w=majority`;
+// retryWrites=true&
 
+const sessionStore = new SessionStore({ uri: url, collection: 'sessions' });
 let db;
 
 const connectToDb = async () => {
@@ -67,4 +72,5 @@ module.exports = {
   makeModel,
   COLLECTION_NAMES,
   MODEL_NAMES,
+  sessionStore,
 };
