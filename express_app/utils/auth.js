@@ -6,3 +6,5 @@ module.exports.isAuthenticated = (req) => {
 
   return !!req.session.user;
 };
+
+module.exports.SALT_ROUNDS = 12;

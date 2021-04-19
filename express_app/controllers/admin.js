@@ -1,5 +1,4 @@
 const Product = require('../models/product');
-const { isAuthenticated } = require('../utils/auth');
 
 module.exports.getAddProduct = (req, res, next) => {
   // res.sendFile(path.join(ROOT_DIR, 'views', 'add-product.html'));
@@ -7,7 +6,6 @@ module.exports.getAddProduct = (req, res, next) => {
     pageTitle: 'Add Product',
     path: '/admin/add-product',
     editing: false,
-    isAuthenticated: isAuthenticated(req),
   });
 };
 
@@ -33,7 +31,6 @@ module.exports.getProducts = (req, res) => {
       prods: products,
       pageTitle: 'Admin Products',
       path: '/admin/products',
-      isAuthenticated: isAuthenticated(req),
     });
   });
 };
@@ -55,7 +52,6 @@ exports.getEditProduct = (req, res, next) => {
       path: '/admin/edit-product',
       editing: editMode,
       product,
-      isAuthenticated: isAuthenticated(req),
     });
   });
 };
