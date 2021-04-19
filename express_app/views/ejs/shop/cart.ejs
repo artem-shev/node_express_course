@@ -21,6 +21,8 @@
             </ul>
             <div class="centered">
                 <form action="/create-order" method="post">
+                    <%- include('../includes/csrf') %>
+
                     <button class="btn">Order Now!</button>
                 </form>
             </div>

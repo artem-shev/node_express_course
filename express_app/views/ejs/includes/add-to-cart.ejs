@@ -1,4 +1,6 @@
 <form action="/cart" method="post">
     <input type="hidden" name="productId" value="<%= product._id %>">
+    <%- include('../includes/csrf') %>
+
     <button class="btn" type="submit">Add To Cart</button>
 </form>

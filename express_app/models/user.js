@@ -2,8 +2,9 @@ const { Schema, model } = require('mongoose');
 const { MODEL_NAMES } = require('../utils/database');
 
 const userSchema = new Schema({
-  name: { type: String, required: true },
+  name: { type: String },
   email: { type: String, required: true },
+  password: { type: String, required: true },
   cart: {
     items: [
       {

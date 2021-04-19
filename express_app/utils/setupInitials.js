@@ -1,11 +1,21 @@
+const bcrypt = require('bcryptjs');
+
 const User = require('../models/user');
 const Product = require('../models/product');
+const { SALT_ROUNDS } = require('../utils/auth');
 
 module.exports = async () => {
   let user = await User.findOne({ email: 'admin@admin.com' });
 
   if (!user) {
-    user = await new User({ name: 'admin', email: 'admin@admin.com', cart: { items: [] } }).save();
+    const hashedPassword = await bcrypt.hash('111111', SALT_ROUNDS);
+
+    user = await new User({
+      name: 'admin',
+      email: 'admin@admin.com',
+      password: hashedPassword,
+      cart: { items: [] },
+    }).save();
 
     await new Product({
       title: 'first book',

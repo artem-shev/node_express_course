@@ -1,6 +1,5 @@
 const Product = require('../models/product');
 const Order = require('../models/order');
-const { isAuthenticated } = require('../utils/auth');
 
 module.exports.getProducts = (req, res, next) => {
   Product.find().then((products) => {
@@ -9,7 +8,6 @@ module.exports.getProducts = (req, res, next) => {
       prods: products,
       pageTitle: 'All Products',
       path: '/products',
-      isAuthenticated: isAuthenticated(req),
     });
   });
 };
@@ -20,9 +18,9 @@ module.exports.getProduct = (req, res) => {
   Product.findById(productId).then((product) => {
     res.render('shop/product-detail', {
       product,
+      // @ts-ignore
       pageTitle: product?.title,
       path: '/products',
-      isAuthenticated: isAuthenticated(req),
     });
   });
 };
@@ -33,7 +31,6 @@ module.exports.getIndex = (req, res) => {
       prods: products,
       pageTitle: 'Shop',
       path: '/',
-      isAuthenticated: isAuthenticated(req),
     });
   });
 };
@@ -46,7 +43,6 @@ exports.getCart = async (req, res, next) => {
     path: '/cart',
     pageTitle: 'Your Cart',
     products,
-    isAuthenticated: isAuthenticated(req),
   });
 };
 
@@ -78,7 +74,6 @@ module.exports.getCheckout = (req, res, next) => {
   res.render('shop/checkout', {
     pageTitle: 'Checkout',
     path: '/checkout',
-    isAuthenticated: isAuthenticated(req),
   });
 };
 
@@ -91,7 +86,6 @@ module.exports.getOrders = async (req, res, next) => {
     pageTitle: 'Your Orders',
     path: '/orders',
     orders,
-    isAuthenticated: isAuthenticated(req),
   });
 };
 

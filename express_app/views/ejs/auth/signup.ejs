@@ -11,18 +11,22 @@
     <% if (errorMessage.length) { %>
         <div class="user-message user-message--error"><%= errorMessage %></div>
     <% } %>
-    <form action="/login" method="post" class="login-form">
+    <form action="/signup" method="post" class="login-form">
         <%- include('../includes/csrf') %>
 
         <div class="form-control">
             <label for="email">Email</label>
-            <input type="email" id="email" name="email">
+            <input type="email" id="email" name="email" autocomplete="new-password">
         </div>
         <div class="form-control">
             <label for="password">Password</label>
-            <input type="password" id="password" name="password">
+            <input type="password" id="password" name="password" autocomplete="new-password">
         </div>
-        <button class="btn">Login</button>
+        <div class="form-control">
+            <label for="confirmPassword">Confirm Password</label>
+            <input type="password" id="confirmPassword" name="confirmPassword">
+        </div>
+        <button class="btn">Signup</button>
     </form>
 </main>
 <%- include('../includes/end') %>
