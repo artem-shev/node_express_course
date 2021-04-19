@@ -1,4 +1,5 @@
 const Product = require('../models/product');
+const { isAuthenticated } = require('../utils/auth');
 
 module.exports.getAddProduct = (req, res, next) => {
   // res.sendFile(path.join(ROOT_DIR, 'views', 'add-product.html'));
@@ -6,6 +7,7 @@ module.exports.getAddProduct = (req, res, next) => {
     pageTitle: 'Add Product',
     path: '/admin/add-product',
     editing: false,
+    isAuthenticated: isAuthenticated(req),
   });
 };
 
@@ -19,7 +21,7 @@ module.exports.postAddProduct = async (req, res, next) => {
     imageUrl = 'https://cdn.pixabay.com/photo/2016/03/31/20/51/book-1296045_960_720.png';
   }
 
-  await new Product({ title, description, price, imageUrl, userId: req.user }).save();
+  await new Product({ title, description, price, imageUrl, userId: req.session.user }).save();
 
   res.redirect('/');
 };
@@ -31,6 +33,7 @@ module.exports.getProducts = (req, res) => {
       prods: products,
       pageTitle: 'Admin Products',
       path: '/admin/products',
+      isAuthenticated: isAuthenticated(req),
     });
   });
 };
@@ -46,11 +49,13 @@ exports.getEditProduct = (req, res, next) => {
     if (!product) {
       return res.redirect('/');
     }
+
     res.render('admin/edit-product', {
       pageTitle: 'Edit Product',
       path: '/admin/edit-product',
       editing: editMode,
       product,
+      isAuthenticated: isAuthenticated(req),
     });
   });
 };

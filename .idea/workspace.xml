@@ -14,16 +14,15 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/express_app/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/express_app/controllers/admin.js" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/controllers/admin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/express_app/controllers/error.js" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/controllers/error.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/express_app/controllers/shop.js" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/controllers/shop.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/express_app/middlewares/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/middlewares/user.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/express_app/models/order.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/express_app/models/product.js" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/models/product.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/express_app/models/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/models/user.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/express_app/utils/database.js" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/utils/database.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/express_app/utils/setupInitials.js" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/utils/setupInitials.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/express_app/views/ejs/includes/navigation.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/views/ejs/includes/navigation.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/express_app/views/ejs/shop/cart.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/views/ejs/shop/cart.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/express_app/views/ejs/shop/orders.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/views/ejs/shop/orders.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/express_app/views/ejs/shop/index.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/views/ejs/shop/index.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/express_app/views/ejs/shop/product-detail.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/views/ejs/shop/product-detail.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/express_app/views/ejs/shop/product-list.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/views/ejs/shop/product-list.ejs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
@@ -122,7 +121,7 @@
       <workItem from="1618130022726" duration="4851000" />
       <workItem from="1618148361373" duration="868000" />
       <workItem from="1618234972775" duration="14117000" />
-      <workItem from="1618507179801" duration="9594000" />
+      <workItem from="1618507179801" duration="19340000" />
     </task>
     <servers />
   </component>
