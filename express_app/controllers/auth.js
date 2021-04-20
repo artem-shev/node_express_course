@@ -2,9 +2,15 @@ const bcrypt = require('bcryptjs');
 
 const User = require('../models/user');
 const { SALT_ROUNDS } = require('../utils/auth');
+const nodemailer = require('nodemailer');
+const sendgridTransport = require('nodemailer-sendgrid-transport');
+
+const SEND_GRID_API_KEY = process.env.SEND_GRID_API_KEY;
+const mailTransporter = nodemailer.createTransport(
+  sendgridTransport({ auth: { api_key: SEND_GRID_API_KEY } }),
+);
 
 module.exports.getLogin = (req, res, next) => {
-  console.log('sdg', req.flash('error'));
   res.render('auth/login', {
     pageTitle: 'Login',
     path: '/login',
@@ -62,6 +68,14 @@ module.exports.postSignup = async (req, res) => {
 
   const hashedPassword = await bcrypt.hash(password, SALT_ROUNDS);
   const user = await new User({ email, password: hashedPassword, cart: { items: [] } }).save();
+
+  await mailTransporter.sendMail({
+    to: email,
+    from: 'nodecomplete@mailinator.com',
+    subject: 'Signup Succeeded',
+    message: 'Congrats, signup succeeded!',
+    html: '<h1>Congrats, signup succeeded!</h1>',
+  });
 
   return res.redirect('/login');
 };
