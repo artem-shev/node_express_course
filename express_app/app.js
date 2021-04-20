@@ -1,5 +1,9 @@
 const path = require('path');
 
+require('dotenv').config({
+  path: path.resolve(process.cwd(), '.env.local'),
+});
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const session = require('express-session');
