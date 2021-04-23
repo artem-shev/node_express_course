@@ -50,6 +50,7 @@ app.use(userMiddleware);
 app.use((req, res, next) => {
   res.locals.isAuthenticated = isAuthenticated(req);
   res.locals.csrfToken = req.csrfToken();
+  res.locals.path = req.url;
   next();
 });
 

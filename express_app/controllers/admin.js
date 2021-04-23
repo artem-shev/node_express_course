@@ -4,7 +4,6 @@ module.exports.getAddProduct = (req, res, next) => {
   // res.sendFile(path.join(ROOT_DIR, 'views', 'add-product.html'));
   res.render('admin/edit-product', {
     pageTitle: 'Add Product',
-    path: '/admin/add-product',
     editing: false,
   });
 };
@@ -25,12 +24,11 @@ module.exports.postAddProduct = async (req, res, next) => {
 };
 
 module.exports.getProducts = (req, res) => {
-  Product.find().then((products) => {
+  Product.find({ userId: req.user._id }).then((products) => {
     // res.sendFile(path.join(ROOT_DIR, 'views', 'shop.html'));
     res.render('admin/products', {
       prods: products,
       pageTitle: 'Admin Products',
-      path: '/admin/products',
     });
   });
 };
@@ -49,7 +47,6 @@ exports.getEditProduct = (req, res, next) => {
 
     res.render('admin/edit-product', {
       pageTitle: 'Edit Product',
-      path: '/admin/edit-product',
       editing: editMode,
       product,
     });
@@ -59,7 +56,13 @@ exports.getEditProduct = (req, res, next) => {
 exports.postEditProduct = async (req, res, next) => {
   const { title, description, price, imageUrl, productId } = req.body;
 
-  await Product.findByIdAndUpdate(productId, { price, imageUrl, description, title });
+  const product = await Product.findOne({ _id: productId, userId: req.user._id });
+
+  if (!product) return res.redirect('/');
+
+  Object.assign(product, { price, imageUrl, description, title });
+
+  await product.save();
 
   res.redirect('/admin/products');
 };
@@ -67,7 +70,12 @@ exports.postEditProduct = async (req, res, next) => {
 exports.postDeleteProduct = async (req, res, next) => {
   const { productId } = req.body;
 
-  await Product.findByIdAndDelete(productId);
+  const product = await Product.deleteOne({
+    _id: productId,
+    userId: req.user._id,
+  });
+
+  if (!product) return res.redirect('/');
 
   res.redirect('/admin/products');
 };
