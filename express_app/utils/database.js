@@ -7,7 +7,7 @@ const SessionStore = require('connect-mongodb-session')(session);
 const dbName = 'nodeComplete';
 const url = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PSW}@cluster0.0tlz2.mongodb.net/${dbName}?w=majority`;
 // retryWrites=true&
-
+console.log('url', url);
 const sessionStore = new SessionStore({ uri: url, collection: 'sessions' });
 let db;
 

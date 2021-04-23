@@ -13,11 +13,14 @@
     <list default="true" id="8bbd4397-325d-4f85-b22e-6852ca5d059b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/express_app/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/express_app/controllers/admin.js" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/controllers/admin.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/express_app/controllers/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/controllers/auth.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/express_app/controllers/shop.js" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/controllers/shop.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/express_app/models/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/models/user.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/express_app/routes/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/routes/auth.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/express_app/utils/database.js" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/utils/database.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn-error.log" beforeDir="false" afterPath="$PROJECT_DIR$/yarn-error.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/express_app/views/ejs/auth/login.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/views/ejs/auth/login.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/express_app/views/ejs/includes/navigation.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/views/ejs/includes/navigation.ejs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,7 +118,8 @@
       <workItem from="1618148361373" duration="868000" />
       <workItem from="1618234972775" duration="14117000" />
       <workItem from="1618507179801" duration="19340000" />
-      <workItem from="1618844289273" duration="10806000" />
+      <workItem from="1618844289273" duration="10988000" />
+      <workItem from="1619206969063" duration="5224000" />
     </task>
     <servers />
   </component>

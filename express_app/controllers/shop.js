@@ -7,7 +7,6 @@ module.exports.getProducts = (req, res, next) => {
     res.render('shop/product-list', {
       prods: products,
       pageTitle: 'All Products',
-      path: '/products',
     });
   });
 };
@@ -30,7 +29,6 @@ module.exports.getIndex = (req, res) => {
     res.render('shop', {
       prods: products,
       pageTitle: 'Shop',
-      path: '/',
     });
   });
 };
@@ -40,7 +38,6 @@ exports.getCart = async (req, res, next) => {
   const products = await user.getCart();
 
   res.render('shop/cart', {
-    path: '/cart',
     pageTitle: 'Your Cart',
     products,
   });
@@ -73,7 +70,6 @@ exports.postCartDeleteProduct = async (req, res, next) => {
 module.exports.getCheckout = (req, res, next) => {
   res.render('shop/checkout', {
     pageTitle: 'Checkout',
-    path: '/checkout',
   });
 };
 
@@ -84,7 +80,6 @@ module.exports.getOrders = async (req, res, next) => {
 
   res.render('shop/orders', {
     pageTitle: 'Your Orders',
-    path: '/orders',
     orders,
   });
 };
