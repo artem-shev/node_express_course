@@ -11,7 +11,7 @@
     <% if (errorMessage.length) { %>
         <div class="user-message user-message--error"><%= errorMessage %></div>
     <% } %>
-    <form action="/login" method="post" class="login-form">
+    <form action="/login" method="post" class="login-form" novalidate>
         <%- include('../includes/csrf') %>
 
         <div class="form-control">
