@@ -1,3 +1,4 @@
+const { check, validationResult, body } = require('express-validator/check');
 const Product = require('../models/product');
 
 module.exports.getAddProduct = (req, res, next) => {
@@ -8,8 +9,27 @@ module.exports.getAddProduct = (req, res, next) => {
   });
 };
 
+module.exports.validatePostProduct = [
+  body('title').trim().isString().isLength({ min: 3 }),
+  body('imageUrl').trim().isURL(),
+  body('price').trim().isFloat(),
+  body('description').trim().isLength({ min: 5, max: 200 }),
+];
+
 module.exports.postAddProduct = async (req, res, next) => {
   let { title, description, price, imageUrl } = req.body;
+  const errors = validationResult(req);
+
+  if (!errors.isEmpty()) {
+    const descriptor = {
+      hasError: true,
+      fieldsWithErrors: errors.array().reduce((acc, { msg, param }) => {
+        acc[param] = msg;
+        return acc;
+      }, {}),
+    };
+    console.warn('invalid product input', errors.array());
+  }
 
   if (!title) title = 'book';
   if (!description) description = 'awesome book';
@@ -55,6 +75,11 @@ exports.getEditProduct = (req, res, next) => {
 
 exports.postEditProduct = async (req, res, next) => {
   const { title, description, price, imageUrl, productId } = req.body;
+  const errors = validationResult(req);
+
+  if (!errors.isEmpty()) {
+    console.warn('invalid product input');
+  }
 
   const product = await Product.findOne({ _id: productId, userId: req.user._id });
 

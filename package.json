@@ -20,6 +20,7 @@
     "cookie": "^0.4.1",
     "csurf": "^1.11.0",
     "express-session": "^1.17.1",
+    "express-validator": "^6.10.0",
     "lodash": "^4.17.21",
     "mongodb": "^3.6.6",
     "mongoose": "^5.12.3",

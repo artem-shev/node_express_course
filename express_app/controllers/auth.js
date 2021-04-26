@@ -1,5 +1,6 @@
 const crypto = require('crypto');
 const bcrypt = require('bcryptjs');
+const { validationResult, check, body } = require('express-validator/check');
 
 const User = require('../models/user');
 const { SALT_ROUNDS } = require('../utils/auth');
@@ -18,8 +19,32 @@ module.exports.getLogin = (req, res, next) => {
   });
 };
 
+module.exports.postLoginValidators = [
+  body('email').isEmail().withMessage('Invalid email').normalizeEmail(),
+  body('password', 'wrong psw').trim().isLength({ min: 6 }).isAlphanumeric(),
+  // .custom(async (password, { req: { body } }) => {
+  //   const user = await User.findOne({ email: body.email });
+  //
+  //   if (!user?.password) throw new Error('User not found.');
+  //
+  //   const isPasswordMatch = await bcrypt.compare(password, user?.password);
+  //
+  //   if (!isPasswordMatch) throw new Error('Wrong Password');
+  //
+  //   return true;
+  // }),
+];
+
 module.exports.postLogin = async (req, res, next) => {
   const { email, password } = req.body;
+  const errors = validationResult(req);
+
+  if (!errors.isEmpty()) {
+    return res.status(400).render('auth/login', {
+      pageTitle: 'Login',
+      errorMessage: errors.array()[0].msg,
+    });
+  }
 
   const user = await User.findOne({ email });
   try {
@@ -55,14 +80,45 @@ module.exports.getSignup = (req, res) => {
   });
 };
 
+module.exports.postSignupValidators = [
+  check('email')
+    .isEmail()
+    .withMessage('Invalid email.')
+    .normalizeEmail()
+    .custom(async (value, { req }) => {
+      // if (value.includes('test')) {
+      //   throw new Error('This email is forbidden.');
+      // }
+      // return true;
+
+      const userDoc = await User.findOne({ email: req.body.email });
+
+      if (userDoc) {
+        throw new Error('Email already taken.');
+      }
+
+      return true;
+    }),
+  body('password', 'invalid password.').trim().isLength({ min: 6 }).isAlphanumeric(),
+  body('confirmPassword')
+    .trim()
+    .custom(async (value, { req }) => {
+      if (value !== req.body.password) {
+        throw new Error('Passwords have to match!');
+      }
+      return true;
+    }),
+];
+
 module.exports.postSignup = async (req, res) => {
   const { email, password, confirmPassword } = req.body;
+  const errors = validationResult(req);
 
-  const userDoc = await User.findOne({ email });
-
-  if (userDoc) {
-    req.flash('error', 'Email already taken.');
-    return res.redirect('/signup');
+  if (!errors.isEmpty()) {
+    return res.status(422).render('auth/signup', {
+      pageTitle: 'Signup',
+      errorMessage: errors.array()[0].msg,
+    });
   }
 
   const hashedPassword = await bcrypt.hash(password, SALT_ROUNDS);
