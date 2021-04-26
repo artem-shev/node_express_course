@@ -5,3 +5,10 @@ module.exports.get404 = (req, res, next) => {
     path: '/404',
   });
 };
+
+module.exports.get500 = (req, res, next) => {
+  res.status(500).render('500', {
+    pageTitle: 'Something went wrong :(',
+    path: '/500',
+  });
+};

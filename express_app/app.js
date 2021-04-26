@@ -17,7 +17,7 @@ const adminData = require('./routes/admin');
 const shopRoutes = require('./routes/shop');
 const authRoutes = require('./routes/auth');
 
-const { get404 } = require('./controllers/error');
+const { get404, get500 } = require('./controllers/error');
 const setupInitials = require('./utils/setupInitials');
 const { isAuthenticated } = require('./utils/auth');
 
@@ -45,7 +45,6 @@ app.use(
 );
 app.use(csrfProtection);
 app.use(flash());
-app.use(userMiddleware);
 
 app.use((req, res, next) => {
   res.locals.isAuthenticated = isAuthenticated(req);
@@ -56,11 +55,19 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use(userMiddleware);
+
 app.use('/admin', adminData.router);
 app.use(shopRoutes);
 app.use(authRoutes);
 
+app.get('/500', get500);
+
 app.use(get404);
+
+app.use((err, req, res, next) => {
+  res.redirect('/500');
+});
 
 connectToDb()
   .then(setupInitials)

@@ -43,7 +43,9 @@ module.exports.postAddProduct = async (req, res, next) => {
   res.redirect('/');
 };
 
-module.exports.getProducts = (req, res) => {
+module.exports.getProducts = (req, res, next) => {
+  // return next(new Error('test'));
+
   Product.find({ userId: req.user._id }).then((products) => {
     // res.sendFile(path.join(ROOT_DIR, 'views', 'shop.html'));
     res.render('admin/products', {
