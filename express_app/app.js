@@ -20,6 +20,7 @@ const authRoutes = require('./routes/auth');
 const { get404, get500 } = require('./controllers/error');
 const setupInitials = require('./utils/setupInitials');
 const { isAuthenticated } = require('./utils/auth');
+const { upload } = require('./utils/upload');
 
 const PORT = 3000;
 const app = express();
@@ -29,7 +30,9 @@ app.set('view engine', 'ejs');
 app.set('views', path.join('views', 'ejs'));
 
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(upload.single('image')); // upload should be added before csrf
 app.use(express.static(path.join(process.cwd(), 'public')));
+app.use('/tmp/uploads', express.static(path.join(process.cwd(), 'tmp/uploads')));
 
 app.use(
   session({
@@ -66,6 +69,7 @@ app.get('/500', get500);
 app.use(get404);
 
 app.use((err, req, res, next) => {
+  console.log('err', err);
   res.redirect('/500');
 });
 
