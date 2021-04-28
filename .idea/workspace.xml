@@ -11,7 +11,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8bbd4397-325d-4f85-b22e-6852ca5d059b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/express_app/public/js/admin.js" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/public/js/admin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/express_app/controllers/admin.js" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/controllers/admin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/express_app/controllers/shop.js" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/controllers/shop.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/express_app/routes/shop.js" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/routes/shop.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/express_app/views/ejs/includes/navigation.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/views/ejs/includes/navigation.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/express_app/views/ejs/shop/cart.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/views/ejs/shop/cart.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/express_app/views/ejs/shop/checkout.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/views/ejs/shop/checkout.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,7 +121,9 @@
       <workItem from="1619206969063" duration="10178000" />
       <workItem from="1619467928702" duration="3725000" />
       <workItem from="1619544251603" duration="9910000" />
-      <workItem from="1619605196565" duration="10753000" />
+      <workItem from="1619605196565" duration="10993000" />
+      <workItem from="1619646079120" duration="101000" />
+      <workItem from="1619646303607" duration="4128000" />
     </task>
     <servers />
   </component>

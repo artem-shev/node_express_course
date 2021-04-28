@@ -11,6 +11,7 @@ const {
   postCartDeleteProduct,
   postOrder,
   getInvoice,
+  getCheckoutSuccess,
 } = require('../controllers/shop');
 const isAuth = require('../middlewares/is-auth');
 
@@ -23,7 +24,9 @@ router.get('/products', getProducts);
 router.get('/products/:productId', getProduct);
 router.get('/checkout', isAuth, getCheckout);
 router.post('/cart-delete-item', isAuth, postCartDeleteProduct);
-router.post('/create-order', isAuth, postOrder);
+// router.post('/create-order', isAuth, postOrder);
 router.get('/orders/:orderId', isAuth, getInvoice);
+router.get('/checkout/success', getCheckoutSuccess);
+router.get('/checkout/cancel', getCheckout);
 
 module.exports = router;
