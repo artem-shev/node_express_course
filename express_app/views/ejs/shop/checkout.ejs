@@ -2,10 +2,40 @@
 <html lang="en">
 <head>
     <%- include('../includes/head') %>
+    <link rel="stylesheet" href="/css/cart.css" />
+    <script src="https://js.stripe.com/v3/"></script>
 </head>
 <body>
     <%- include('../includes/navigation') %>
-    <main>checkout</main>
+    <main>
+        <ul class="cart__item-list">
+            <% products.forEach(p => { %>
+                <li class="cart__item">
+                    <p><%= p.product.title %> (<%= p.quantity %>)</p>
+                    <form action="/cart-delete-item" method="POST">
+                        <input type="hidden" value="<%= p.product._id %>" name="productId">
+                        <button class="btn" type="submit">Delete</button>
+                    </form>
+                </li>
+            <% }) %>
+        </ul>
+        <div class="centered">
+            <h2>Total: <%= totalSum %></h2>
+        </div>
+        <div class="centered">
+            <button id="order-btn" class="btn">ORDER</button>
+            <script>
+                const stripe = Stripe('<%= stripePublishableKey %>');
+                const orderBtn =document.querySelector('#order-btn');
+
+                orderBtn.addEventListener('click', () => {
+                  stripe.redirectToCheckout({
+                    sessionId:'<%=  stripeSession.id %>'
+                  });
+                });
+            </script>
+        </div>
+    </main>
     <%- include('../includes/end') %>
 </body>
 </html>

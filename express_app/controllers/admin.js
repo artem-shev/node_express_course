@@ -41,7 +41,7 @@ module.exports.postAddProduct = async (req, res, next) => {
     title = `book #${books.length + 1}`;
   }
   if (!description) description = faker.lorem.sentences(2);
-  if (!price) price = faker.commerce.price();
+  if (!price) price = faker.commerce.price(9.99, 200);
   if (image) {
     imageUrl = `/${image.path}`;
   }

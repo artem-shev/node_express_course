@@ -20,11 +20,12 @@
                 <% }) %>
             </ul>
             <div class="centered">
-                <form action="/create-order" method="post">
-                    <%- include('../includes/csrf') %>
+<!--                <form action="/create-order" method="post">-->
+<!--                    <%- include('../includes/csrf') %>-->
 
-                    <button class="btn">Order Now!</button>
-                </form>
+<!--                    <button class="btn">Order Now!</button>-->
+<!--                </form>-->
+                <a href="/checkout" class="btn">Order Now</a>
             </div>
         <% } else { %>
             <h1>No Products in Cart!</h1>

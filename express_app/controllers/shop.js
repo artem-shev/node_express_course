@@ -1,10 +1,13 @@
 const fs = require('fs');
 const path = require('path');
 const PDFDocument = require('pdfkit');
+const { Stripe } = require('stripe');
 
 const Product = require('../models/product');
 const Order = require('../models/order');
 const getPaginationData = require('../utils/pagination');
+
+const stripe = new Stripe(process.env.STRIP_SECRET_KEY, { apiVersion: '2020-08-27' });
 
 module.exports.getProducts = async (req, res, next) => {
   const total = await Product.countDocuments();
@@ -80,10 +83,52 @@ exports.postCartDeleteProduct = async (req, res, next) => {
   res.redirect('/cart');
 };
 
-module.exports.getCheckout = (req, res, next) => {
-  res.render('shop/checkout', {
-    pageTitle: 'Checkout',
-  });
+module.exports.getCheckout = async (req, res, next) => {
+  const { user } = req;
+  try {
+    const products = await user.getCart();
+
+    if (!products.length) throw new Error('Cart is empty');
+
+    const totalSum = products.reduce(
+      (acc, { quantity, product }) => acc + quantity * product.price,
+      0,
+    );
+    const stripeSession = await stripe.checkout.sessions.create({
+      payment_method_types: ['card'],
+      line_items: products.map(({ product, quantity }) => ({
+        name: product.title,
+        description: product.description,
+        amount: product.price * 100,
+        currency: 'usd',
+        quantity,
+      })),
+      success_url: `${req.protocol}://${req.get('host')}/checkout/success`,
+      cancel_url: `${req.protocol}://${req.get('host')}/checkout/cancel`,
+    });
+
+    res.render('shop/checkout', {
+      pageTitle: 'Checkout',
+      products,
+      totalSum,
+      stripeSession,
+      stripePublishableKey: process.env.STRIP_PUBLISHABLE_KEY,
+    });
+  } catch (e) {
+    next(e);
+  }
+};
+
+module.exports.getCheckoutSuccess = async (req, res, next) => {
+  const { user } = req;
+
+  await user.populate('cart.items.product').execPopulate();
+
+  await new Order({ products: user.cart.items, user }).save();
+
+  await user.clearCart();
+
+  res.redirect('/orders');
 };
 
 module.exports.getOrders = async (req, res, next) => {
