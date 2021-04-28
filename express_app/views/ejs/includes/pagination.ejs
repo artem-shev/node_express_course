@@ -1,0 +1,24 @@
+<%
+const pages = Array.from(Array(totalPages), (_, i) => i + 1);
+const getPageUrl = (page) => `?page=${page}&itemsPerPage=${itemsPerPage}`
+%>
+
+<section class="pagination">
+    <a href="<%= getPageUrl(firstPage) %>" class="<%= !hasPrevPage ? 'disabled' : '' %>">
+        &#171;
+    </a>
+    <a href="<%= getPageUrl(previousPage) %>" class="<%= !hasPrevPage ? 'disabled' : '' %>">
+        &lsaquo;
+    </a>
+    <% pages.forEach((page) => { %>
+        <a href="<%= getPageUrl(page) %>" class="<%= page === currentPage ? 'active' : '' %>">
+            <%= page %>
+        </a>
+    <% }) %>
+    <a href="<%= getPageUrl(nextPage) %>" class="<%= !hasNextPage ? 'disabled' : '' %>">
+        &rsaquo;
+    </a>
+    <a href="<%= getPageUrl(lastPage) %>" class="<%= !hasNextPage ? 'disabled' : '' %>">
+        &#187;
+    </a>
+</section>

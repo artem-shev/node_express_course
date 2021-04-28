@@ -27,7 +27,7 @@
                 <% for (r of menu) { %>
                     <% if (r.private === undefined || (r.private && isAuthenticated) || (r.private === false && !isAuthenticated)) { %>
                         <li class="main-header__item">
-                            <a href="<%= r.url %>" class="<%= path === r.url ? 'active' : '' %>"><%= r.name %></a>
+                            <a href="<%= r.url %>" class="<%= path === r.url || (r.url.length > 1 && path.startsWith(r.url)) ? 'active' : '' %>"><%= r.name %></a>
                         </li>
                     <% } %>
                 <% } %>
