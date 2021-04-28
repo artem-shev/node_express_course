@@ -4,14 +4,18 @@ const PDFDocument = require('pdfkit');
 
 const Product = require('../models/product');
 const Order = require('../models/order');
+const getPaginationData = require('../utils/pagination');
 
-module.exports.getProducts = (req, res, next) => {
-  Product.find().then((products) => {
-    // res.sendFile(path.join(ROOT_DIR, 'views', 'shop.html'));
-    res.render('shop/product-list', {
-      prods: products,
-      pageTitle: 'All Products',
-    });
+module.exports.getProducts = async (req, res, next) => {
+  const total = await Product.countDocuments();
+  const { skip, limit, ...pagePaginationData } = getPaginationData(req, total);
+  const products = await Product.find().skip(skip).limit(limit);
+  // res.sendFile(path.join(ROOT_DIR, 'views', 'shop.html'));
+  res.render('shop/product-list', {
+    prods: products,
+    pageTitle: 'All Products',
+
+    ...pagePaginationData,
   });
 };
 
@@ -28,12 +32,17 @@ module.exports.getProduct = (req, res) => {
   });
 };
 
-module.exports.getIndex = (req, res) => {
-  Product.find().then((products) => {
-    res.render('shop', {
-      prods: products,
-      pageTitle: 'Shop',
-    });
+module.exports.getIndex = async (req, res) => {
+  const total = await Product.countDocuments();
+  const { skip, limit, ...pagePaginationData } = getPaginationData(req, total);
+
+  const products = await Product.find().skip(skip).limit(limit);
+
+  res.render('shop', {
+    prods: products,
+    pageTitle: 'Shop',
+
+    ...pagePaginationData,
   });
 };
 

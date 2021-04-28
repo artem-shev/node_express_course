@@ -1,6 +1,8 @@
 const { validationResult, body } = require('express-validator/check');
+const faker = require('faker');
 
 const Product = require('../models/product');
+const getPaginationData = require('../utils/pagination');
 const { deleteFile } = require('../utils/file');
 
 module.exports.getAddProduct = (req, res, next) => {
@@ -34,14 +36,18 @@ module.exports.postAddProduct = async (req, res, next) => {
     console.warn('invalid product input', errors.array());
   }
 
-  if (!title) title = 'book';
-  if (!description) description = 'awesome book';
-  if (!price) price = 42.99;
+  if (!title) {
+    const books = await Product.find();
+    title = `book #${books.length + 1}`;
+  }
+  if (!description) description = faker.lorem.sentences(2);
+  if (!price) price = faker.commerce.price();
   if (image) {
     imageUrl = `/${image.path}`;
   }
   if (!imageUrl) {
-    imageUrl = 'https://cdn.pixabay.com/photo/2016/03/31/20/51/book-1296045_960_720.png';
+    imageUrl = faker.image.imageUrl(250, 350, 'books', true);
+    // imageUrl = 'https://cdn.pixabay.com/photo/2016/03/31/20/51/book-1296045_960_720.png';
   }
 
   await new Product({ title, description, price, imageUrl, userId: req.session.user }).save();
@@ -49,15 +55,18 @@ module.exports.postAddProduct = async (req, res, next) => {
   res.redirect('/admin/products');
 };
 
-module.exports.getProducts = (req, res, next) => {
+module.exports.getProducts = async (req, res, next) => {
   // return next(new Error('test'));
+  const total = await Product.countDocuments({ userId: req.user._id });
+  const { skip, limit, ...pagePaginationData } = getPaginationData(req, total);
 
-  Product.find({ userId: req.user._id }).then((products) => {
-    // res.sendFile(path.join(ROOT_DIR, 'views', 'shop.html'));
-    res.render('admin/products', {
-      prods: products,
-      pageTitle: 'Admin Products',
-    });
+  const products = await Product.find({ userId: req.user._id }).skip(skip).limit(limit);
+
+  // res.sendFile(path.join(ROOT_DIR, 'views', 'shop.html'));
+  res.render('admin/products', {
+    prods: products,
+    pageTitle: 'Admin Products',
+    ...pagePaginationData,
   });
 };
 
