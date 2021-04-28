@@ -11,17 +11,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8bbd4397-325d-4f85-b22e-6852ca5d059b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/express_app/controllers/admin.js" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/controllers/admin.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/express_app/controllers/shop.js" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/controllers/shop.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/express_app/public/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/public/css/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/express_app/views/ejs/admin/products.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/views/ejs/admin/products.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/express_app/views/ejs/includes/navigation.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/views/ejs/includes/navigation.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/express_app/views/ejs/shop/index.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/views/ejs/shop/index.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/express_app/views/ejs/shop/product-detail.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/views/ejs/shop/product-detail.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/express_app/views/ejs/shop/product-list.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/views/ejs/shop/product-list.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/express_app/public/js/admin.js" beforeDir="false" afterPath="$PROJECT_DIR$/express_app/public/js/admin.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -123,7 +113,7 @@
       <workItem from="1619206969063" duration="10178000" />
       <workItem from="1619467928702" duration="3725000" />
       <workItem from="1619544251603" duration="9910000" />
-      <workItem from="1619605196565" duration="6612000" />
+      <workItem from="1619605196565" duration="10753000" />
     </task>
     <servers />
   </component>
