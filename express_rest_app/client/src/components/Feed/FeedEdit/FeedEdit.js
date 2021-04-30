@@ -10,30 +10,30 @@ import { generateBase64FromImage } from '../../../util/image';
 
 const POST_FORM = {
   title: {
-    value: '',
-    valid: false,
-    touched: false,
-    validators: [required, length({ min: 5 })]
+    value: 'New Post',
+    valid: true,
+    touched: true,
+    validators: [required, length({ min: 5 })],
   },
   image: {
     value: '',
-    valid: false,
-    touched: false,
-    validators: [required]
+    valid: true,
+    touched: true,
+    validators: [],
   },
   content: {
-    value: '',
-    valid: false,
-    touched: false,
-    validators: [required, length({ min: 5 })]
-  }
+    value: 'new post description',
+    valid: true,
+    touched: true,
+    validators: [required, length({ min: 5 })],
+  },
 };
 
 class FeedEdit extends Component {
   state = {
     postForm: POST_FORM,
     formIsValid: false,
-    imagePreview: null
+    imagePreview: null,
   };
 
   componentDidUpdate(prevProps, prevState) {
@@ -46,18 +46,18 @@ class FeedEdit extends Component {
         title: {
           ...prevState.postForm.title,
           value: this.props.selectedPost.title,
-          valid: true
+          valid: true,
         },
         image: {
           ...prevState.postForm.image,
           value: this.props.selectedPost.imagePath,
-          valid: true
+          valid: true,
         },
         content: {
           ...prevState.postForm.content,
           value: this.props.selectedPost.content,
-          valid: true
-        }
+          valid: true,
+        },
       };
       this.setState({ postForm: postForm, formIsValid: true });
     }
@@ -66,47 +66,50 @@ class FeedEdit extends Component {
   postInputChangeHandler = (input, value, files) => {
     if (files) {
       generateBase64FromImage(files[0])
-        .then(b64 => {
+        .then((b64) => {
           this.setState({ imagePreview: b64 });
         })
-        .catch(e => {
+        .catch((e) => {
           this.setState({ imagePreview: null });
         });
     }
-    this.setState(prevState => {
+    this.setState((prevState) => {
       let isValid = true;
+
       for (const validator of prevState.postForm[input].validators) {
-        isValid = isValid && validator(value);
+        isValid = isValid && (!prevState.postForm[input].validators?.length || validator(value));
       }
       const updatedForm = {
         ...prevState.postForm,
         [input]: {
           ...prevState.postForm[input],
           valid: isValid,
-          value: files ? files[0] : value
-        }
+          value: files ? files[0] : value,
+        },
       };
+
       let formIsValid = true;
       for (const inputName in updatedForm) {
         formIsValid = formIsValid && updatedForm[inputName].valid;
       }
+
       return {
         postForm: updatedForm,
-        formIsValid: formIsValid
+        formIsValid: formIsValid,
       };
     });
   };
 
-  inputBlurHandler = input => {
-    this.setState(prevState => {
+  inputBlurHandler = (input) => {
+    this.setState((prevState) => {
       return {
         postForm: {
           ...prevState.postForm,
           [input]: {
             ...prevState.postForm[input],
-            touched: true
-          }
-        }
+            touched: true,
+          },
+        },
       };
     });
   };
@@ -114,7 +117,7 @@ class FeedEdit extends Component {
   cancelPostChangeHandler = () => {
     this.setState({
       postForm: POST_FORM,
-      formIsValid: false
+      formIsValid: false,
     });
     this.props.onCancelEdit();
   };
@@ -123,13 +126,13 @@ class FeedEdit extends Component {
     const post = {
       title: this.state.postForm.title.value,
       image: this.state.postForm.image.value,
-      content: this.state.postForm.content.value
+      content: this.state.postForm.content.value,
     };
     this.props.onFinishEdit(post);
     this.setState({
       postForm: POST_FORM,
       formIsValid: false,
-      imagePreview: null
+      imagePreview: null,
     });
   };
 
@@ -166,9 +169,7 @@ class FeedEdit extends Component {
             />
             <div className="new-post__preview-image">
               {!this.state.imagePreview && <p>Please choose an image.</p>}
-              {this.state.imagePreview && (
-                <Image imageUrl={this.state.imagePreview} contain left />
-              )}
+              {this.state.imagePreview && <Image imageUrl={this.state.imagePreview} contain left />}
             </div>
             <Input
               id="content"
