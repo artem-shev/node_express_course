@@ -10,6 +10,8 @@ import ErrorHandler from 'components/ErrorHandler/ErrorHandler';
 import './Feed.css';
 import { API_URL } from 'util/constants';
 
+const ITEMS_PER_PAGE = 3;
+
 class Feed extends Component {
   state = {
     isEditing: false,
@@ -51,7 +53,7 @@ class Feed extends Component {
       page--;
       this.setState({ postPage: page });
     }
-    fetch(`${API_URL}/feed/posts`)
+    fetch(`${API_URL}/feed/posts?page=${page}&itemsPerPage=${ITEMS_PER_PAGE}`)
       .then((res) => {
         if (res.status !== 200) {
           throw new Error('Failed to fetch posts.');
@@ -60,7 +62,7 @@ class Feed extends Component {
       })
       .then((resData) => {
         this.setState({
-          posts: resData.posts,
+          posts: resData.posts.map((post) => ({ ...post, imagePath: post.imageUrl })),
           totalPosts: resData.totalItems,
           postsLoading: false,
         });
@@ -106,17 +108,20 @@ class Feed extends Component {
     this.setState({
       editLoading: true,
     });
-    // Set up data (with image!)
+
+    const formData = new FormData();
+    Object.entries(postData).forEach(([fieldName, value]) => {
+      formData.append(fieldName, value);
+    });
+
     let url = `${API_URL}/feed/post`;
     let method = 'POST';
-    const body = JSON.stringify(postData);
-    const headers = { 'Content-Type': 'application/json' };
     if (this.state.editPost) {
-      url = 'URL';
+      url = `${API_URL}/feed/posts/${this.state.editPost._id}`;
       method = 'PUT';
     }
 
-    fetch(url, { method, body, headers })
+    fetch(url, { method, body: formData })
       .then((res) => {
         if (res.status !== 200 && res.status !== 201) {
           throw new Error('Creating or editing a post failed!');
@@ -165,7 +170,7 @@ class Feed extends Component {
 
   deletePostHandler = (postId) => {
     this.setState({ postsLoading: true });
-    fetch('URL')
+    fetch(`${API_URL}/feed/posts/${postId}`, { method: 'DELETE' })
       .then((res) => {
         if (res.status !== 200 && res.status !== 201) {
           throw new Error('Deleting a post failed!');

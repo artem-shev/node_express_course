@@ -18,7 +18,7 @@ const PORT = 8080;
 
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use('/tmp/uploads', express.static(path.join(__dirname, 'tmp', 'uploads')));
+app.use('/server/tmp/uploads', express.static(path.join(__dirname, 'tmp', 'uploads')));
 
 // app.use((req, res, next) => {
 //   res.setHeader('Access-Control-Allow-Origin', '*');

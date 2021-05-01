@@ -12,15 +12,14 @@
   <component name="ChangeListManager">
     <list default="true" id="8bbd4397-325d-4f85-b22e-6852ca5d059b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/express_rest_app/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/express_rest_app/client/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/express_rest_app/client/src/components/Feed/FeedEdit/FeedEdit.js" beforeDir="false" afterPath="$PROJECT_DIR$/express_rest_app/client/src/components/Feed/FeedEdit/FeedEdit.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/express_rest_app/client/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/express_rest_app/client/src/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/express_rest_app/client/src/pages/Feed/Feed.js" beforeDir="false" afterPath="$PROJECT_DIR$/express_rest_app/client/src/pages/Feed/Feed.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/express_rest_app/client/src/pages/Feed/SinglePost/SinglePost.js" beforeDir="false" afterPath="$PROJECT_DIR$/express_rest_app/client/src/pages/Feed/SinglePost/SinglePost.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/express_rest_app/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/express_rest_app/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/express_rest_app/server/app.ts" beforeDir="false" afterPath="$PROJECT_DIR$/express_rest_app/server/app.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/express_rest_app/server/controllers/feed.ts" beforeDir="false" afterPath="$PROJECT_DIR$/express_rest_app/server/controllers/feed.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/express_rest_app/server/routes/feed.ts" beforeDir="false" afterPath="$PROJECT_DIR$/express_rest_app/server/routes/feed.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/express_rest_app/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/express_rest_app/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/express_rest_app/server/utils/database.ts" beforeDir="false" afterPath="$PROJECT_DIR$/express_rest_app/server/utils/database.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/express_rest_app/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/express_rest_app/yarn.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
@@ -44,6 +43,14 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/express_rest_app/nodemon.json" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/package.json" root0="FORCE_HIGHLIGHTING" />
@@ -66,12 +73,12 @@
     <property name="javascript.nodejs.core.library.typings.version" value="14.14.37" />
     <property name="js.last.introduce.type" value="CONST" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/express_rest_app/server" />
-    <property name="nodejs_interpreter_path" value="node" />
+    <property name="nodejs_interpreter_path" value="/usr/local/bin/node" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/node_modules/prettier" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Console Colors" />
-    <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
+    <property name="settings.editor.selected.configurable" value="settings.nodejs" />
+    <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -112,11 +119,14 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Node.js.node" />
       <item itemvalue="npm.start" />
+      <item itemvalue="Node.js.node" />
     </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="8bbd4397-325d-4f85-b22e-6852ca5d059b" name="Default Changelist" comment="" />
@@ -145,7 +155,11 @@
       <workItem from="1619605196565" duration="10993000" />
       <workItem from="1619646079120" duration="101000" />
       <workItem from="1619646303607" duration="4347000" />
-      <workItem from="1619703599833" duration="17577000" />
+      <workItem from="1619703599833" duration="18362000" />
+      <workItem from="1619815942421" duration="4243000" />
+      <workItem from="1619860138367" duration="391000" />
+      <workItem from="1619860553518" duration="320000" />
+      <workItem from="1619861141075" duration="6736000" />
     </task>
     <servers />
   </component>
