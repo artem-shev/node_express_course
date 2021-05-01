@@ -11,15 +11,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8bbd4397-325d-4f85-b22e-6852ca5d059b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/express_rest_app/client/src/util/fetch.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/express_rest_app/server/controllers/auth.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/express_rest_app/server/middlewares/is-auth.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/express_rest_app/server/routes/auth.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/express_rest_app/server/utils/password.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/express_rest_app/client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/express_rest_app/client/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/express_rest_app/client/src/pages/Feed/Feed.js" beforeDir="false" afterPath="$PROJECT_DIR$/express_rest_app/client/src/pages/Feed/Feed.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/express_rest_app/client/src/pages/Feed/SinglePost/SinglePost.js" beforeDir="false" afterPath="$PROJECT_DIR$/express_rest_app/client/src/pages/Feed/SinglePost/SinglePost.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/express_rest_app/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/express_rest_app/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/express_rest_app/server/app.ts" beforeDir="false" afterPath="$PROJECT_DIR$/express_rest_app/server/app.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/express_rest_app/server/controllers/feed.ts" beforeDir="false" afterPath="$PROJECT_DIR$/express_rest_app/server/controllers/feed.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/express_rest_app/server/custom.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/express_rest_app/server/custom.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/express_rest_app/server/middlewares/error.ts" beforeDir="false" afterPath="$PROJECT_DIR$/express_rest_app/server/middlewares/error.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/express_rest_app/server/models/post.ts" beforeDir="false" afterPath="$PROJECT_DIR$/express_rest_app/server/models/post.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/express_rest_app/server/models/user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/express_rest_app/server/models/user.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/express_rest_app/server/routes/feed.ts" beforeDir="false" afterPath="$PROJECT_DIR$/express_rest_app/server/routes/feed.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/express_rest_app/server/utils/database.ts" beforeDir="false" afterPath="$PROJECT_DIR$/express_rest_app/server/utils/database.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/express_rest_app/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/express_rest_app/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/express_rest_app/server/utils/errors.ts" beforeDir="false" afterPath="$PROJECT_DIR$/express_rest_app/server/utils/errors.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/express_rest_app/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/express_rest_app/tsconfig.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
@@ -159,7 +169,7 @@
       <workItem from="1619815942421" duration="4243000" />
       <workItem from="1619860138367" duration="391000" />
       <workItem from="1619860553518" duration="320000" />
-      <workItem from="1619861141075" duration="6736000" />
+      <workItem from="1619861141075" duration="18198000" />
     </task>
     <servers />
   </component>

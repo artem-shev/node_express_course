@@ -9,6 +9,7 @@ import Loader from 'components/Loader/Loader';
 import ErrorHandler from 'components/ErrorHandler/ErrorHandler';
 import './Feed.css';
 import { API_URL } from 'util/constants';
+import { getAuthHeader, makeHeaders } from '../../util/fetch';
 
 const ITEMS_PER_PAGE = 3;
 
@@ -25,7 +26,7 @@ class Feed extends Component {
   };
 
   componentDidMount() {
-    fetch('URL')
+    fetch(`${API_URL}/user/status`, { headers: getAuthHeader() })
       .then((res) => {
         if (res.status !== 200) {
           throw new Error('Failed to fetch user status.');
@@ -53,7 +54,9 @@ class Feed extends Component {
       page--;
       this.setState({ postPage: page });
     }
-    fetch(`${API_URL}/feed/posts?page=${page}&itemsPerPage=${ITEMS_PER_PAGE}`)
+    fetch(`${API_URL}/feed/posts?page=${page}&itemsPerPage=${ITEMS_PER_PAGE}`, {
+      headers: makeHeaders(),
+    })
       .then((res) => {
         if (res.status !== 200) {
           throw new Error('Failed to fetch posts.');
@@ -72,7 +75,11 @@ class Feed extends Component {
 
   statusUpdateHandler = (event) => {
     event.preventDefault();
-    fetch('URL')
+    fetch(`${API_URL}/user/status`, {
+      method: 'PUT',
+      headers: makeHeaders(),
+      body: JSON.stringify({ status: this.state.status }),
+    })
       .then((res) => {
         if (res.status !== 200 && res.status !== 201) {
           throw new Error("Can't update status!");
@@ -114,14 +121,14 @@ class Feed extends Component {
       formData.append(fieldName, value);
     });
 
-    let url = `${API_URL}/feed/post`;
+    let url = `${API_URL}/feed/posts`;
     let method = 'POST';
     if (this.state.editPost) {
       url = `${API_URL}/feed/posts/${this.state.editPost._id}`;
       method = 'PUT';
     }
 
-    fetch(url, { method, body: formData })
+    fetch(url, { method, body: formData, headers: getAuthHeader() })
       .then((res) => {
         if (res.status !== 200 && res.status !== 201) {
           throw new Error('Creating or editing a post failed!');
@@ -170,7 +177,7 @@ class Feed extends Component {
 
   deletePostHandler = (postId) => {
     this.setState({ postsLoading: true });
-    fetch(`${API_URL}/feed/posts/${postId}`, { method: 'DELETE' })
+    fetch(`${API_URL}/feed/posts/${postId}`, { method: 'DELETE', headers: getAuthHeader() })
       .then((res) => {
         if (res.status !== 200 && res.status !== 201) {
           throw new Error('Deleting a post failed!');

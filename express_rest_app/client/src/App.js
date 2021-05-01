@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
+import { mapValues } from 'lodash';
 
 import Layout from './components/Layout/Layout';
 import Backdrop from './components/Backdrop/Backdrop';
@@ -12,16 +13,18 @@ import SinglePostPage from './pages/Feed/SinglePost/SinglePost';
 import LoginPage from './pages/Auth/Login';
 import SignupPage from './pages/Auth/Signup';
 import './App.css';
+import { API_URL } from 'util/constants';
+import { makeHeaders } from './util/fetch';
 
 class App extends Component {
   state = {
     showBackdrop: false,
     showMobileNav: false,
-    isAuth: true,
+    isAuth: false,
     token: null,
     userId: null,
     authLoading: false,
-    error: null
+    error: null,
   };
 
   componentDidMount() {
@@ -35,13 +38,12 @@ class App extends Component {
       return;
     }
     const userId = localStorage.getItem('userId');
-    const remainingMilliseconds =
-      new Date(expiryDate).getTime() - new Date().getTime();
+    const remainingMilliseconds = new Date(expiryDate).getTime() - new Date().getTime();
     this.setState({ isAuth: true, token: token, userId: userId });
     this.setAutoLogout(remainingMilliseconds);
   }
 
-  mobileNavHandler = isOpen => {
+  mobileNavHandler = (isOpen) => {
     this.setState({ showMobileNav: isOpen, showBackdrop: isOpen });
   };
 
@@ -59,8 +61,15 @@ class App extends Component {
   loginHandler = (event, authData) => {
     event.preventDefault();
     this.setState({ authLoading: true });
-    fetch('URL')
-      .then(res => {
+    fetch(`${API_URL}/auth/login`, {
+      method: 'POST',
+      headers: makeHeaders(),
+      body: JSON.stringify({
+        email: authData.email,
+        password: authData.password,
+      }),
+    })
+      .then((res) => {
         if (res.status === 422) {
           throw new Error('Validation failed.');
         }
@@ -70,29 +79,27 @@ class App extends Component {
         }
         return res.json();
       })
-      .then(resData => {
+      .then((resData) => {
         console.log(resData);
         this.setState({
           isAuth: true,
           token: resData.token,
           authLoading: false,
-          userId: resData.userId
+          userId: resData.userId,
         });
         localStorage.setItem('token', resData.token);
         localStorage.setItem('userId', resData.userId);
         const remainingMilliseconds = 60 * 60 * 1000;
-        const expiryDate = new Date(
-          new Date().getTime() + remainingMilliseconds
-        );
+        const expiryDate = new Date(new Date().getTime() + remainingMilliseconds);
         localStorage.setItem('expiryDate', expiryDate.toISOString());
         this.setAutoLogout(remainingMilliseconds);
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err);
         this.setState({
           isAuth: false,
           authLoading: false,
-          error: err
+          error: err,
         });
       });
   };
@@ -100,12 +107,17 @@ class App extends Component {
   signupHandler = (event, authData) => {
     event.preventDefault();
     this.setState({ authLoading: true });
-    fetch('URL')
-      .then(res => {
-        if (res.status === 422) {
-          throw new Error(
-            "Validation failed. Make sure the email address isn't used yet!"
-          );
+
+    const values = mapValues(authData.signupForm, ({ value }) => value);
+
+    fetch(`${API_URL}/auth/signup`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(values),
+    })
+      .then((res) => {
+        if (res.status === 400) {
+          throw new Error("Validation failed. Make sure the email address isn't used yet!");
         }
         if (res.status !== 200 && res.status !== 201) {
           console.log('Error!');
@@ -113,22 +125,22 @@ class App extends Component {
         }
         return res.json();
       })
-      .then(resData => {
+      .then((resData) => {
         console.log(resData);
         this.setState({ isAuth: false, authLoading: false });
         this.props.history.replace('/');
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err);
         this.setState({
           isAuth: false,
           authLoading: false,
-          error: err
+          error: err,
         });
       });
   };
 
-  setAutoLogout = milliseconds => {
+  setAutoLogout = (milliseconds) => {
     setTimeout(() => {
       this.logoutHandler();
     }, milliseconds);
@@ -144,23 +156,15 @@ class App extends Component {
         <Route
           path="/"
           exact
-          render={props => (
-            <LoginPage
-              {...props}
-              onLogin={this.loginHandler}
-              loading={this.state.authLoading}
-            />
+          render={(props) => (
+            <LoginPage {...props} onLogin={this.loginHandler} loading={this.state.authLoading} />
           )}
         />
         <Route
           path="/signup"
           exact
-          render={props => (
-            <SignupPage
-              {...props}
-              onSignup={this.signupHandler}
-              loading={this.state.authLoading}
-            />
+          render={(props) => (
+            <SignupPage {...props} onSignup={this.signupHandler} loading={this.state.authLoading} />
           )}
         />
         <Redirect to="/" />
@@ -172,18 +176,12 @@ class App extends Component {
           <Route
             path="/"
             exact
-            render={props => (
-              <FeedPage userId={this.state.userId} token={this.state.token} />
-            )}
+            render={(props) => <FeedPage userId={this.state.userId} token={this.state.token} />}
           />
           <Route
             path="/:postId"
-            render={props => (
-              <SinglePostPage
-                {...props}
-                userId={this.state.userId}
-                token={this.state.token}
-              />
+            render={(props) => (
+              <SinglePostPage {...props} userId={this.state.userId} token={this.state.token} />
             )}
           />
           <Redirect to="/" />
@@ -192,9 +190,7 @@ class App extends Component {
     }
     return (
       <Fragment>
-        {this.state.showBackdrop && (
-          <Backdrop onClick={this.backdropClickHandler} />
-        )}
+        {this.state.showBackdrop && <Backdrop onClick={this.backdropClickHandler} />}
         <ErrorHandler error={this.state.error} onHandle={this.errorHandler} />
         <Layout
           header={

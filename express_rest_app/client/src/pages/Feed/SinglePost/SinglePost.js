@@ -4,6 +4,7 @@ import { API_URL } from 'util/constants';
 
 import Image from '../../../components/Image/Image';
 import './SinglePost.css';
+import { getAuthHeader } from '../../../util/fetch';
 
 class SinglePost extends Component {
   state = {
@@ -16,7 +17,7 @@ class SinglePost extends Component {
 
   componentDidMount() {
     const postId = this.props.match.params.postId;
-    fetch(`${API_URL}/feed/posts/${postId}`)
+    fetch(`${API_URL}/feed/posts/${postId}`, { headers: getAuthHeader() })
       .then((res) => {
         if (res.status !== 200) {
           throw new Error('Failed to fetch status');

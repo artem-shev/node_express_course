@@ -12,6 +12,8 @@ import connectToDb, { URL } from './utils/database';
 import errorHandler from './middlewares/error';
 
 import feedRoutes from './routes/feed';
+import authRoutes from './routes/auth';
+import userRoutes from './routes/user';
 
 const app = express();
 const PORT = 8080;
@@ -30,6 +32,8 @@ app.use('/server/tmp/uploads', express.static(path.join(__dirname, 'tmp', 'uploa
 app.use(cors());
 
 app.use('/feed', feedRoutes);
+app.use('/auth', authRoutes);
+app.use('/user', userRoutes);
 
 app.use(errorHandler);
 

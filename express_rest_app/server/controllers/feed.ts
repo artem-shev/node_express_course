@@ -1,9 +1,10 @@
 import { body, validationResult } from 'express-validator';
 
 import Post from '../models/post';
+import User from '../models/user';
 import { makeAsyncMiddleware } from '../utils/express';
 import imageUpload, { clearImage } from '../utils/imageUpload';
-import { throw404, throw400 } from '../utils/errors';
+import { throw404, throw400, throw403 } from '../utils/errors';
 
 export const getPosts = makeAsyncMiddleware(async (req, res, next) => {
   const { page = '1', itemsPerPage = '2' } = req.query;
@@ -48,6 +49,8 @@ export const validateCreatePost = [
 
 export const createPost = makeAsyncMiddleware(async (req, res, next) => {
   let { title, content, imageUrl } = req.body;
+  // @ts-ignore
+  const { userId } = req;
   const errors = validationResult(req);
 
   if (!errors.isEmpty()) throw400('Validation failed!', errors.array());
@@ -59,11 +62,17 @@ export const createPost = makeAsyncMiddleware(async (req, res, next) => {
     imageUrl = 'https://i.pinimg.com/474x/a6/1e/89/a61e8974159fe112a6357314342f87b1.jpg';
   }
 
-  const post = await new Post({ title, content, imageUrl, creator: { name: 'Admin' } }).save();
+  const post = await new Post({ title, content, imageUrl, creator: userId }).save();
+  const user = await User.findById(userId);
+
+  user.posts.push(post);
+
+  await user.save();
 
   res.status(201).json({
     message: 'Post created successfully!',
     post,
+    creator: { _id: user._id, name: user.name },
   });
 });
 
@@ -81,9 +90,12 @@ export const editPost = makeAsyncMiddleware(async (req, res) => {
   if (imageUrl === 'undefined') imageUrl = undefined;
   if (file) imageUrl = file.path;
 
+  // @ts-ignore
   const post = await Post.findById(postId);
 
-  if (!post) throw404();
+  if (!post) return throw404();
+  // @ts-ignore
+  if (post.creator._id.toString() !== req.userId) return throw403();
 
   if (imageUrl && !post.imageUrl?.includes('http') && imageUrl !== post.imageUrl) {
     clearImage(post.imageUrl);
@@ -102,9 +114,14 @@ export const deletePost = makeAsyncMiddleware(async (req, res) => {
   const post = await Post.findById(postId);
 
   if (!post) return throw404();
+  // @ts-ignore
+  if (post.creator._id.toString() !== req.userId) return throw403();
   if (!post.imageUrl.includes('http')) clearImage(post.imageUrl);
 
   await post.delete();
+
+  // @ts-ignore
+  await User.updateOne({ _id: req.userId }, { $pull: { posts: post._id } });
 
   res.status(200).json({ message: 'deleted' });
 });

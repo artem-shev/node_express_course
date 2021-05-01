@@ -9,15 +9,17 @@ import {
   editPost,
   deletePost,
 } from '../controllers/feed';
+import isAuth from '../middlewares/is-auth';
 
 const router = Router();
 
-router.get('/posts', getPosts);
+router.use(isAuth);
+
+router.route('/posts').get(getPosts).post(processCreatePost, validateCreatePost, createPost);
 router
   .route('/posts/:postId')
   .get(getPost)
   .put(processCreatePost, validateCreatePost, editPost)
   .delete(deletePost);
-router.post('/post', processCreatePost, validateCreatePost, createPost);
 
 export default router;
