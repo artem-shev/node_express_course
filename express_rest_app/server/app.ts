@@ -8,6 +8,7 @@ require('dotenv').config({
   path: path.resolve(__dirname, '.env.local'),
 });
 
+import socket from './socket';
 import connectToDb, { URL } from './utils/database';
 import errorHandler from './middlewares/error';
 
@@ -39,9 +40,15 @@ app.use(errorHandler);
 
 connectToDb()
   .then(() => {
-    app.listen(PORT, () => {
+    const server = app.listen(PORT, () => {
       console.log(`\ndb url: ${URL}`);
       console.log(`\napp listening at http://localhost:${PORT}\n`);
+    });
+
+    const io = socket.init(server);
+
+    io.on('connection', () => {
+      console.log('Server connected');
     });
   })
   .catch(console.error);

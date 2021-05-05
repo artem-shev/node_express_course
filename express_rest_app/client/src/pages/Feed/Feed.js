@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import openSocket from 'socket.io-client';
 
 import Post from 'components/Feed/Post/Post';
 import Button from 'components/Button/Button';
@@ -39,7 +40,65 @@ class Feed extends Component {
       .catch(this.catchError);
 
     this.loadPosts();
+
+    this.socket = openSocket(API_URL);
+
+    this.socket.on('posts', this.handlePostsEvent);
   }
+
+  componentWillUnmount() {
+    this.socket.off('posts', this.handlePostsEvent);
+  }
+
+  handlePostsEvent = (data) => {
+    switch (data.action) {
+      case 'create':
+        return this.addPost(data.post);
+
+      case 'update':
+        return this.updatePost(data.post);
+
+      case 'delete':
+        return this.deletePost(data.post);
+
+      default:
+        return;
+    }
+  };
+
+  addPost = (post) => {
+    this.setState((prevState) => {
+      const updatedPosts = [...prevState.posts];
+      if (prevState.postPage === 1) {
+        if (prevState.posts.length >= 2) {
+          updatedPosts.pop();
+        }
+        updatedPosts.unshift(post);
+      }
+      return {
+        posts: updatedPosts,
+        totalPosts: prevState.totalPosts + 1,
+      };
+    });
+  };
+
+  updatePost = (post) => {
+    this.setState((prevState) => {
+      const updatedPosts = [...prevState.posts];
+      const updatedPostIndex = updatedPosts.findIndex((p) => p._id === post._id);
+
+      if (updatedPostIndex > -1) {
+        updatedPosts[updatedPostIndex] = post;
+      }
+      return {
+        posts: updatedPosts,
+      };
+    });
+  };
+
+  deletePost = () => {
+    this.loadPosts();
+  };
 
   loadPosts = (direction) => {
     if (direction) {
@@ -143,21 +202,10 @@ class Feed extends Component {
           creator: resData.post.creator,
           createdAt: resData.post.createdAt,
         };
-        this.setState((prevState) => {
-          let updatedPosts = [...prevState.posts];
-
-          if (prevState.editPost) {
-            const postIndex = prevState.posts.findIndex((p) => p._id === prevState.editPost._id);
-            updatedPosts[postIndex] = post;
-          } else if (prevState.posts.length < 2) {
-            updatedPosts = prevState.posts.concat(post);
-          }
-          return {
-            posts: updatedPosts,
-            isEditing: false,
-            editPost: null,
-            editLoading: false,
-          };
+        this.setState({
+          isEditing: false,
+          editPost: null,
+          editLoading: false,
         });
       })
       .catch((err) => {
@@ -187,8 +235,11 @@ class Feed extends Component {
       .then((resData) => {
         console.log(resData);
         this.setState((prevState) => {
-          const updatedPosts = prevState.posts.filter((p) => p._id !== postId);
-          return { posts: updatedPosts, postsLoading: false };
+          //   const updatedPosts = prevState.posts.filter((p) => p._id !== postId);
+          return {
+            // posts: updatedPosts,
+            postsLoading: false,
+          };
         });
       })
       .catch((err) => {

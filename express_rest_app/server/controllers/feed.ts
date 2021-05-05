@@ -1,5 +1,6 @@
 import { body, validationResult } from 'express-validator';
 
+import socket from '../socket';
 import Post from '../models/post';
 import User from '../models/user';
 import { makeAsyncMiddleware } from '../utils/express';
@@ -21,7 +22,11 @@ export const getPosts = makeAsyncMiddleware(async (req, res, next) => {
     itemsPerPage: processedItemPerPage,
   };
 
-  const posts = await Post.find().sort({ createdAt: 'desc' }).skip(skip).limit(limit);
+  const posts = await Post.find()
+    .populate('creator')
+    .sort({ createdAt: 'desc' })
+    .skip(skip)
+    .limit(limit);
 
   res.status(200).json({
     posts,
@@ -69,6 +74,8 @@ export const createPost = makeAsyncMiddleware(async (req, res, next) => {
 
   await user.save();
 
+  socket.io.emit('posts', { action: 'create', post: { ...post.toObject(), creator: user } });
+
   res.status(201).json({
     message: 'Post created successfully!',
     post,
@@ -90,8 +97,7 @@ export const editPost = makeAsyncMiddleware(async (req, res) => {
   if (imageUrl === 'undefined') imageUrl = undefined;
   if (file) imageUrl = file.path;
 
-  // @ts-ignore
-  const post = await Post.findById(postId);
+  const post = await Post.findById(postId).populate('creator');
 
   if (!post) return throw404();
   // @ts-ignore
@@ -103,7 +109,9 @@ export const editPost = makeAsyncMiddleware(async (req, res) => {
 
   Object.assign(post, { imageUrl, title, content });
 
-  await post.save();
+  const updatedPost = await post.save();
+
+  socket.io.emit('posts', { action: 'update', post: updatedPost });
 
   res.status(200).json({ message: 'post updated', post });
 });
@@ -116,12 +124,14 @@ export const deletePost = makeAsyncMiddleware(async (req, res) => {
   if (!post) return throw404();
   // @ts-ignore
   if (post.creator._id.toString() !== req.userId) return throw403();
-  if (!post.imageUrl.includes('http')) clearImage(post.imageUrl);
+  if (!post.imageUrl?.includes('http')) clearImage(post.imageUrl);
 
   await post.delete();
 
   // @ts-ignore
   await User.updateOne({ _id: req.userId }, { $pull: { posts: post._id } });
+
+  socket.io.emit('posts', { action: 'delete', post: postId });
 
   res.status(200).json({ message: 'deleted' });
 });
